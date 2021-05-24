@@ -12,10 +12,10 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.appgym.R;
-import com.example.appgym.admin.fragment.chan.TapChanFragment;
-import com.example.appgym.admin.fragment.diadiem.DiaDiemFragment;
-import com.example.appgym.admin.fragment.nguc.TapNgucFragment;
-import com.example.appgym.admin.fragment.tay.TapTayFragment;
+import com.example.appgym.admin.fragment.leg.LegAdminFragment;
+import com.example.appgym.admin.fragment.map.MapAdminFragment;
+import com.example.appgym.admin.fragment.chest.ChestAdminFragment;
+import com.example.appgym.admin.fragment.hand.HandAdminFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -32,8 +32,8 @@ public class AdminActivity extends AppCompatActivity {
         toolbar = getSupportActionBar();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_admin);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
-        toolbar.setTitle("Tập ngực");
-        loadFragment(new TapNgucFragment());
+        toolbar.setTitle(R.string.tv_chestchallenge);
+        loadFragment(new ChestAdminFragment());
 
     }
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
@@ -43,29 +43,29 @@ public class AdminActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_tap_nguc:
-                    toolbar.setTitle("Tập ngực");
-                    fragment = new TapNgucFragment();
+                    toolbar.setTitle(R.string.bottomnav_chest);
+                    fragment = new ChestAdminFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_tap_bung:
-                    toolbar.setTitle("Tập bụng");
-                    fragment = new TapNgucFragment();
+                    toolbar.setTitle(R.string.bottomnav_stomach);
+                    fragment = new ChestAdminFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_tap_tay:
-                    toolbar.setTitle("Tập tay");
-                    fragment = new TapTayFragment();
+                    toolbar.setTitle(R.string.bottomnav_hand);
+                    fragment = new HandAdminFragment();
                     loadFragment(fragment);
                     return true;
 
                 case R.id.navigation_tap_chan:
-                    toolbar.setTitle("Tập chân");
-                    fragment = new TapChanFragment();
+                    toolbar.setTitle(R.string.bottomnav_leg);
+                    fragment = new LegAdminFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_dia_diem:
-                    toolbar.setTitle("Địa điểm");
-                    fragment = new DiaDiemFragment();
+                    toolbar.setTitle(R.string.bottomnav_map);
+                    fragment = new MapAdminFragment();
                     loadFragment(fragment);
                     return true;
             }
