@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item android:id="@+id/navigation_tap_nguc"
+            android:icon="@drawable/chest_bottomlogo"
+            android:title="@string/bottomnav_chest"/>
+        <item android:id="@+id/navigation_tap_bung"
+            android:icon="@drawable/stomach_bottomlogo"
+            android:title="@string/bottomnav_stomach"/>
+        <item android:id="@+id/navigation_tap_tay"
+            android:icon="@drawable/hand_bottomlogo"
+            android:title="@string/bottomnav_hand"/>
+        <item android:id="@+id/navigation_tap_chan"
+            android:icon="@drawable/leg_bottomlogo"
+            android:title="@string/bottomnav_leg"/>
+        <item android:id="@+id/navigation_dia_diem"
+            android:icon="@drawable/map_bottomlogo"
+            android:title="@string/bottomnav_map"/>
+    </group>
+</menu>

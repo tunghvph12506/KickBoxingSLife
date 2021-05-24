@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/navigation_home"
+            android:title="@string/title_home"
+            android:enabled="true"/>
+        <item
+            android:id="@+id/navigation_report"
+            android:title="@string/title_report"
+            android:enabled="true"/>
+        <item android:id="@+id/navigation_advertisement"
+            android:title="@string/title_advertisement"
+            android:enabled="true"/>
+    </group>
+</menu>

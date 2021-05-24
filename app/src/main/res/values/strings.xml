@@ -1,0 +1,31 @@
+<resources>
+    <string name="app_name">KickboxingSLife</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+
+    <!-- mainActivity-->
+    <string name="title_home">Home</string>
+    <string name="title_report">Report</string>
+    <string name="title_advertisement">Advertisement</string>
+
+    <!-- mainActivity-->
+
+    <!-- navigation-->
+
+    <!-- navigation-->
+
+
+    <!-- HomeFragment-->
+    <string name="tv_stomachchallenge">Stomach Challenge</string>
+    <string name="tv_chestchallenge">Chest Challenge</string>
+    <string name="tv_handchallenge">Hand Challenge</string>
+    <string name="tv_legchallenge">Leg Challenge</string>
+    <!-- HomeFragment-->
+
+    <!-- navigation_admin-->
+    <string name="bottomnav_chest">ChestChallenge</string>
+    <string name="bottomnav_hand">HandChallenge</string>
+    <string name="bottomnav_stomach">StomachChallenge</string>
+    <string name="bottomnav_leg">LegChallenge</string>
+    <string name="bottomnav_map">Map</string>
+</resources>

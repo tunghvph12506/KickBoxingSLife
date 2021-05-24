@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.appgym">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/kickboxing_logo"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/kickboxing_logo_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.AppGYM">
+        <activity android:name=".user.fragment.challenge.LegChallengeActivity"></activity>
+        <activity android:name=".user.fragment.challenge.StomachChallengeActivity" />
+        <activity android:name=".user.fragment.challenge.HandChallengeActivity" />
+        <activity android:name=".user.fragment.challenge.ChestChallengeActivity" />
+        <activity android:name=".admin.AdminActivity" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+        <activity
+            android:name=".splash.SplashActivity"
+            android:theme="@style/Theme.AppGYM.NoActionBar"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+            <corners android:radius="20dp"/>
+            <padding android:left="10dp" android:right="10dp" android:top="10dp" android:bottom="10dp"/>
+            <stroke android:width="1dp" android:color="#CCCCCC"/>
+            <gradient
+                android:startColor="@color/white"
+                android:endColor="@color/DarkCyan"
+                android:type="linear"/>
+        </shape>
+    </item>
+    <item
+        android:drawable="@drawable/legchallenge"
+        android:bottom="0dp"
+        android:left="0dp"
+        android:right="0dp"
+        android:top="0dp"/>
+</layer-list>
