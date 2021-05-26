@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -51,7 +52,6 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-
         video = new Video();
         storageReference = FirebaseStorage.getInstance().getReference("Video");
         databaseReference = FirebaseDatabase.getInstance().getReference("Data/Video");
@@ -65,6 +65,7 @@ public class AddActivity extends AppCompatActivity {
 
         toolbar = getSupportActionBar();
         toolbar.setTitle(R.string.title_add);
+        toolbar.setDisplayHomeAsUpEnabled(true);
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,6 +160,19 @@ public class AddActivity extends AppCompatActivity {
         else
         {
             Toast.makeText(AddActivity.this,"All field are required", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
         }
     }
 }
