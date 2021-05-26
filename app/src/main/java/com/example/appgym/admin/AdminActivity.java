@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -86,5 +87,17 @@ public class AdminActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case R.id.add_icon:
+                Intent intent = new Intent(AdminActivity.this,AddActivity.class);
+                startActivity(intent);
+                return true;
 
+            default: return super.onOptionsItemSelected(item);
+        }
+
+    }
 }

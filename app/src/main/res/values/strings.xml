@@ -28,4 +28,9 @@
     <string name="bottomnav_stomach">StomachChallenge</string>
     <string name="bottomnav_leg">LegChallenge</string>
     <string name="bottomnav_map">Map</string>
+    <!-- navigation_admin-->
+
+    <!-- AddActivity -->
+    <string name="title_add">Add Exercise</string>
+    <!-- AddActivity -->
 </resources>
