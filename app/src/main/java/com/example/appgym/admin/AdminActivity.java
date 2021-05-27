@@ -28,8 +28,6 @@ public class AdminActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
         FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference().child("QuanLyBan");
-        myRef.setValue("Hello, World!");
         toolbar = getSupportActionBar();
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation_admin);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
