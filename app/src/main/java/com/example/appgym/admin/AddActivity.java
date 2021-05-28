@@ -15,7 +15,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.webkit.MimeTypeMap;
@@ -31,7 +30,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import com.example.appgym.R;
-import com.example.appgym.model.Video;
+import com.example.appgym.model.Exercise;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,7 +44,6 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 
 public class AddActivity extends AppCompatActivity {
@@ -58,8 +56,8 @@ public class AddActivity extends AppCompatActivity {
     Uri videoUri,imageUri;
     MediaController mediaController;
     StorageReference storageReferenceVideo,storageReferenceImage;
-    DatabaseReference databaseReference;
-    Video video;
+    DatabaseReference databaseReference, databaseReferenceCheck;
+    Exercise exercise;
     UploadTask uploadTaskVideo,uploadTaskImage;
     Button btnChoose;
     ActionBar toolbar;
@@ -73,7 +71,7 @@ public class AddActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add);
-        video = new Video();
+        exercise = new Exercise();
         storageReferenceVideo = FirebaseStorage.getInstance().getReference("Videos");
         storageReferenceImage = FirebaseStorage.getInstance().getReference("Images");
         btnUpload = findViewById(R.id.button_upload_main);
@@ -214,7 +212,7 @@ public class AddActivity extends AppCompatActivity {
         if(videoUri != null && imageUri != null && !TextUtils.isEmpty(videoName) && !TextUtils.isEmpty(calo))
         {
             ChangePathFireBase();
-            databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            databaseReferenceCheck.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot.exists())
@@ -246,7 +244,7 @@ public class AddActivity extends AppCompatActivity {
                                         if(task.isSuccessful())
                                         {
                                             Uri downloadUrl = task.getResult();
-                                            video.setVideoUrl(downloadUrl.toString());
+                                            exercise.setVideoUrl(downloadUrl.toString());
                                             Task<Uri> uriTask1 = uploadTaskImage.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                                                 @Override
                                                 public Task<Uri> then(Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -264,12 +262,11 @@ public class AddActivity extends AppCompatActivity {
                                                             if(task.isSuccessful())
                                                             {
                                                                 Uri downloadUrl = task.getResult();
-                                                                video.setName(videoName);
-                                                                video.setCalo(calo);
-                                                                video.setSearch(search);
-                                                                video.setImageUrl(downloadUrl.toString());
-                                                                String i = databaseReference.push().getKey();
-                                                                databaseReference.child(i).setValue(video);
+                                                                exercise.setName(videoName);
+                                                                exercise.setCalo(calo);
+                                                                exercise.setSearch(search);
+                                                                exercise.setImageUrl(downloadUrl.toString());
+                                                                databaseReference.child(search).setValue(exercise);
                                                                 progressBar.setVisibility(View.INVISIBLE);
                                                                 Toast.makeText(AddActivity.this,"Data saved", Toast.LENGTH_SHORT).show();
                                                             }
@@ -314,6 +311,7 @@ public class AddActivity extends AppCompatActivity {
     private void ChangePathFireBase()
     {
         String name = edtName.getText().toString().toLowerCase();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Data/"+group+"/"+name);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Data/"+group);
+        databaseReferenceCheck = FirebaseDatabase.getInstance().getReference("Data/"+group+"/"+name);
     }
 }

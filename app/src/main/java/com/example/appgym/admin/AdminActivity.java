@@ -17,6 +17,7 @@ import com.example.appgym.admin.fragment.leg.LegAdminFragment;
 import com.example.appgym.admin.fragment.map.MapAdminFragment;
 import com.example.appgym.admin.fragment.chest.ChestAdminFragment;
 import com.example.appgym.admin.fragment.hand.HandAdminFragment;
+import com.example.appgym.admin.fragment.stomach.StomachAdminFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -48,7 +49,7 @@ public class AdminActivity extends AppCompatActivity {
                     return true;
                 case R.id.navigation_tap_bung:
                     toolbar.setTitle(R.string.bottomnav_stomach);
-                    fragment = new ChestAdminFragment();
+                    fragment = new StomachAdminFragment();
                     loadFragment(fragment);
                     return true;
                 case R.id.navigation_tap_tay:

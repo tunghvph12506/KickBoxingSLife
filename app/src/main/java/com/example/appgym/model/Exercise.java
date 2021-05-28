@@ -1,13 +1,13 @@
 package com.example.appgym.model;
 
-public class Video {
+public class Exercise {
     private String name;
     private String videoUrl;
     private String imageUrl;
     private String search;
     private String calo;
 
-    public Video()
+    public Exercise()
     {
 
     }
