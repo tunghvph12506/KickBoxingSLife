@@ -14,45 +14,90 @@
         android:layout_height="216dp">
 
     </VideoView>
+    
+    <ImageView
+        android:id="@+id/imgview_main"
+        android:layout_marginTop="20dp"
+        android:layout_width="192dp"
+        android:layout_height="108dp">
+
+    </ImageView>
 
     <EditText
         android:layout_marginTop="20dp"
-        android:id="@+id/et_video_name"
+        android:id="@+id/edt_video_name"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:hint="Ten video">
 
     </EditText>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="45dp"
+        android:orientation="horizontal">
 
-    <Spinner
-        android:id="@+id/spinner_challenge"
-        android:layout_marginTop="20dp"
-        android:layout_width="350dp"
-        android:layout_height="40dp"
-        android:spinnerMode="dialog"/>
+        <Spinner
+            android:id="@+id/spinner_challenge"
+            android:layout_marginTop="10dp"
+            android:layout_width="230dp"
+            android:layout_height="40dp"
+            android:spinnerMode="dialog"/>
+
+        <EditText
+            android:id="@+id/edt_calo"
+            android:layout_width="120dp"
+            android:layout_height="40dp"
+            android:hint="Calo"
+            android:inputType="number">
+
+        </EditText>
+
+    </LinearLayout>
+
 
     <Button
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:id="@+id/button_upload_main"
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="upload"
-        android:textSize="20dp">
-
-    </Button>
-
-    <Button
-        android:id="@+id/btn_chooseVideo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:text="choose video"
-        android:onClick="ChooseVideo"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        tools:ignore="OnClick">
+        android:text="upload"
+        android:textSize="15dp">
 
     </Button>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_chooseVideo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="choose video"
+            android:onClick="ChooseVideo"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            tools:ignore="OnClick"
+            android:layout_marginRight="30dp">
+
+        </Button>
+
+        <Button
+            android:id="@+id/btn_chooseImage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="choose image"
+            android:onClick="ChooseImage"
+            android:textStyle="bold"
+            android:textSize="15dp"
+            tools:ignore="OnClick">
+
+        </Button>
+
+    </LinearLayout>
+
 
 
     <ProgressBar
@@ -60,7 +105,7 @@
         android:id="@+id/progressBar_main"
         android:layout_marginTop="20dp"
         android:layout_width="350dp"
-        android:layout_height="50dp"
+        android:layout_height="30dp"
         android:indeterminate="true"
         android:indeterminateTint="@android:color/holo_orange_dark"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal">
