@@ -1,5 +1,8 @@
 package com.example.appgym.admin.fragment.hand;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -11,14 +14,21 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.example.appgym.R;
 import com.example.appgym.admin.ViewHolder_Exercise;
 import com.example.appgym.model.Exercise;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class HandAdminFragment extends Fragment {
 
@@ -26,6 +36,7 @@ public class HandAdminFragment extends Fragment {
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     String dataPath = "Data/Hand";
+    List<String> listId;
 
 
     public HandAdminFragment() {
@@ -65,12 +76,82 @@ public class HandAdminFragment extends Fragment {
             public ViewHolder_Exercise onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
                 View view = LayoutInflater.from(parent.getContext())
                         .inflate(R.layout.exercise_item,parent,false);
-                return new ViewHolder_Exercise(view);
+                ViewHolder_Exercise viewHolder_exercise = new ViewHolder_Exercise(view);
+                viewHolder_exercise.setOnClickListener(new ViewHolder_Exercise.ClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                    }
+
+                    @Override
+                    public void onItemLongClick(View view, int position) {
+                        showAlertDialog(getContext(), position);
+                    }
+                });
+
+                return viewHolder_exercise;
             }
 
         };
 
         firebaseRecyclerAdapter.startListening();
         recyclerView.setAdapter(firebaseRecyclerAdapter);
+    }
+
+    public void showAlertDialog(final Context context, int pos)  {
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+
+        builder.setTitle("Confirm Delete").setMessage("Do you want to delete this exercise");
+
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                DatabaseReference dref = database.getReference(dataPath).child(listId.get(pos));
+                dref.removeValue(new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        Toast.makeText(context,"Deleted", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                listId.remove(pos);
+                dialog.dismiss();
+            }
+        });
+
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            public void onClick(DialogInterface dialog, int id) {
+                dialog.dismiss();
+            }
+        });
+
+        AlertDialog alert = builder.create();
+        alert.show();
+    }
+
+    private void getAllList()
+    {
+        listId = new ArrayList<>();
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for(DataSnapshot childDataSnapshot : snapshot.getChildren())
+                {
+                    listId.add(childDataSnapshot.getKey());
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    @Override
+    public void onResume() {
+        getAllList();
+        super.onResume();
     }
 }
