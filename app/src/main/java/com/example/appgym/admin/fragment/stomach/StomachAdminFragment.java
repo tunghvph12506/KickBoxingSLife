@@ -26,6 +26,7 @@ public class StomachAdminFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
+    String dataPath = "Data/Stomach";
 
 
     public StomachAdminFragment() {
@@ -46,7 +47,7 @@ public class StomachAdminFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        databaseReference = database.getReference().child("Data/Stomach");
+        databaseReference = database.getReference().child(dataPath);
 
         FirebaseRecyclerOptions<Exercise> options = new FirebaseRecyclerOptions.Builder<Exercise>()
                 .setQuery(databaseReference, Exercise.class)

@@ -25,6 +25,7 @@ public class HandAdminFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
+    String dataPath = "Data/Hand";
 
 
     public HandAdminFragment() {
@@ -45,7 +46,7 @@ public class HandAdminFragment extends Fragment {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        databaseReference = database.getReference().child("Data/Hand");
+        databaseReference = database.getReference().child(dataPath);
 
         FirebaseRecyclerOptions<Exercise> options = new FirebaseRecyclerOptions.Builder<Exercise>()
                 .setQuery(databaseReference, Exercise.class)
