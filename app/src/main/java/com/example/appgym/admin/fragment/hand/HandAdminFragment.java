@@ -26,6 +26,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +38,8 @@ public class HandAdminFragment extends Fragment {
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     String dataPath = "Data/Hand";
-    List<String> listId;
+    List<Exercise> listExer;
+    FirebaseStorage firebaseStorage;
 
 
     public HandAdminFragment() {
@@ -58,6 +61,9 @@ public class HandAdminFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         databaseReference = database.getReference().child(dataPath);
+        getAllList();
+
+        firebaseStorage = FirebaseStorage.getInstance();
 
         FirebaseRecyclerOptions<Exercise> options = new FirebaseRecyclerOptions.Builder<Exercise>()
                 .setQuery(databaseReference, Exercise.class)
@@ -108,14 +114,18 @@ public class HandAdminFragment extends Fragment {
 
         builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
-                DatabaseReference dref = database.getReference(dataPath).child(listId.get(pos));
+                DatabaseReference dref = database.getReference(dataPath).child(listExer.get(pos).getSearch());
+                StorageReference imageRef = firebaseStorage.getReferenceFromUrl(listExer.get(pos).getImageUrl());
+                StorageReference videoRef = firebaseStorage.getReferenceFromUrl(listExer.get(pos).getVideoUrl());
                 dref.removeValue(new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        imageRef.delete();
+                        videoRef.delete();
                         Toast.makeText(context,"Deleted", Toast.LENGTH_SHORT).show();
                     }
                 });
-                listId.remove(pos);
+                listExer.remove(pos);
                 dialog.dismiss();
             }
         });
@@ -132,13 +142,14 @@ public class HandAdminFragment extends Fragment {
 
     private void getAllList()
     {
-        listId = new ArrayList<>();
+        listExer = new ArrayList<>();
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot childDataSnapshot : snapshot.getChildren())
                 {
-                    listId.add(childDataSnapshot.getKey());
+                    Exercise exercise = new Exercise(childDataSnapshot.child("videoUrl").getValue().toString(),childDataSnapshot.child("imageUrl").getValue().toString(),childDataSnapshot.child("search").getValue().toString());
+                    listExer.add(exercise);
                 }
             }
 

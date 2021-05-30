@@ -222,8 +222,8 @@ public class AddActivity extends AppCompatActivity {
                     else
                     {
                         progressBar.setVisibility(View.VISIBLE);
-                        final StorageReference referenceVideo = storageReferenceVideo.child(videoName + "." + getExt(videoUri));
-                        final StorageReference referenceImage = storageReferenceImage.child(videoName + "." + getExt(imageUri));
+                        final StorageReference referenceVideo = storageReferenceVideo.child(videoName +"_"+group+ "." + getExt(videoUri));
+                        final StorageReference referenceImage = storageReferenceImage.child(videoName +"_"+group+ "." + getExt(imageUri));
                         uploadTaskVideo = referenceVideo.putFile(videoUri);
                         uploadTaskImage = referenceImage.putFile(imageUri);
 

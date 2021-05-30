@@ -12,6 +12,20 @@ public class Exercise {
 
     }
 
+    public Exercise(String videoUrl, String imageUrl, String search) {
+        this.videoUrl = videoUrl;
+        this.imageUrl = imageUrl;
+        this.search = search;
+    }
+
+    public Exercise(String name, String videoUrl, String imageUrl, String search, String calo) {
+        this.name = name;
+        this.videoUrl = videoUrl;
+        this.imageUrl = imageUrl;
+        this.search = search;
+        this.calo = calo;
+    }
+
     public String getName() {
         return name;
     }
