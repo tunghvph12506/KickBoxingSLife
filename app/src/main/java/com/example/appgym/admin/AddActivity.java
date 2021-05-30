@@ -74,16 +74,16 @@ public class AddActivity extends AppCompatActivity {
         exercise = new Exercise();
         storageReferenceVideo = FirebaseStorage.getInstance().getReference("Videos");
         storageReferenceImage = FirebaseStorage.getInstance().getReference("Images");
-        btnUpload = findViewById(R.id.button_upload_main);
-        progressBar = findViewById(R.id.progressBar_main);
-        edtName = findViewById(R.id.edt_video_name);
-        edtCalo = findViewById(R.id.edt_calo);
-        btnChoose = findViewById(R.id.btn_chooseVideo);
+        btnUpload = findViewById(R.id.button_upload_add);
+        progressBar = findViewById(R.id.progressBar_add);
+        edtName = findViewById(R.id.edt_videoname_add);
+        edtCalo = findViewById(R.id.edt_calo_add);
+        btnChoose = findViewById(R.id.btn_chooseVideo_add);
         mediaController = new MediaController(this);
-        spinnerChallenge = findViewById(R.id.spinner_challenge);
-        imageView = findViewById(R.id.imgview_main);
+        spinnerChallenge = findViewById(R.id.spinner_challenge_add);
+        imageView = findViewById(R.id.imgview_add);
         group = "Chest";
-        videoView = findViewById(R.id.videoview_main);
+        videoView = findViewById(R.id.videoview_add);
         videoView.start();
 
         toolbar = getSupportActionBar();
@@ -222,8 +222,8 @@ public class AddActivity extends AppCompatActivity {
                     else
                     {
                         progressBar.setVisibility(View.VISIBLE);
-                        final StorageReference referenceVideo = storageReferenceVideo.child(videoName +"_"+group+ "." + getExt(videoUri));
-                        final StorageReference referenceImage = storageReferenceImage.child(videoName +"_"+group+ "." + getExt(imageUri));
+                        final StorageReference referenceVideo = storageReferenceVideo.child(search +"_"+group+ "." + getExt(videoUri));
+                        final StorageReference referenceImage = storageReferenceImage.child(search +"_"+group+ "." + getExt(imageUri));
                         uploadTaskVideo = referenceVideo.putFile(videoUri);
                         uploadTaskImage = referenceImage.putFile(imageUri);
 

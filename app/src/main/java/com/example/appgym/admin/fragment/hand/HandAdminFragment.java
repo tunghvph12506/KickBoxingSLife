@@ -3,6 +3,7 @@ package com.example.appgym.admin.fragment.hand;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.appgym.R;
+import com.example.appgym.admin.EditActivity;
 import com.example.appgym.admin.ViewHolder_Exercise;
 import com.example.appgym.model.Exercise;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
@@ -38,6 +40,7 @@ public class HandAdminFragment extends Fragment {
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     String dataPath = "Data/Hand";
+    String group = "Hand";
     List<Exercise> listExer;
     FirebaseStorage firebaseStorage;
 
@@ -86,7 +89,15 @@ public class HandAdminFragment extends Fragment {
                 viewHolder_exercise.setOnClickListener(new ViewHolder_Exercise.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-
+                        Intent intent = new Intent(getActivity(), EditActivity.class);
+                        intent.putExtra("dataPath",dataPath);
+                        intent.putExtra("group",group);
+                        intent.putExtra("name",listExer.get(position).getName());
+                        intent.putExtra("videoUrl",listExer.get(position).getVideoUrl());
+                        intent.putExtra("imageUrl",listExer.get(position).getImageUrl());
+                        intent.putExtra("search",listExer.get(position).getSearch());
+                        intent.putExtra("calo",listExer.get(position).getCalo());
+                        startActivity(intent);
                     }
 
                     @Override
@@ -148,7 +159,11 @@ public class HandAdminFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for(DataSnapshot childDataSnapshot : snapshot.getChildren())
                 {
-                    Exercise exercise = new Exercise(childDataSnapshot.child("videoUrl").getValue().toString(),childDataSnapshot.child("imageUrl").getValue().toString(),childDataSnapshot.child("search").getValue().toString());
+                    Exercise exercise = new Exercise(childDataSnapshot.child("name").getValue().toString()
+                            ,childDataSnapshot.child("videoUrl").getValue().toString()
+                            ,childDataSnapshot.child("imageUrl").getValue().toString()
+                            ,childDataSnapshot.child("search").getValue().toString()
+                            ,childDataSnapshot.child("calo").getValue().toString());
                     listExer.add(exercise);
                 }
             }

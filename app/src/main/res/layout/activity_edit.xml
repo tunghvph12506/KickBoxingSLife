@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.fragment.chest.ChestAdminFragment"
+    tools:context=".admin.EditActivity"
     android:orientation="vertical"
-    android:gravity="center"
-    >
+    android:gravity="center">
 
     <VideoView
-        android:id="@+id/videoview_add"
+        android:id="@+id/videoview_edit"
         android:layout_width="384dp"
         android:layout_height="216dp">
 
     </VideoView>
-    
+
     <ImageView
-        android:id="@+id/imgview_add"
+        android:id="@+id/imgview_edit"
         android:layout_marginTop="20dp"
         android:layout_width="192dp"
         android:layout_height="108dp">
@@ -25,7 +25,7 @@
 
     <EditText
         android:layout_marginTop="20dp"
-        android:id="@+id/edt_videoname_add"
+        android:id="@+id/edt_videoname_edit"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:hint="Ten video">
@@ -36,15 +36,15 @@
         android:layout_height="45dp"
         android:orientation="horizontal">
 
-        <Spinner
-            android:id="@+id/spinner_challenge_add"
-            android:layout_marginTop="10dp"
+        <TextView
+            android:id="@+id/tv_challenge_edit"
             android:layout_width="230dp"
             android:layout_height="40dp"
-            android:spinnerMode="dialog"/>
+            android:textSize="20dp"
+            android:textStyle="bold"/>
 
         <EditText
-            android:id="@+id/edt_calo_add"
+            android:id="@+id/edt_calo_edit"
             android:layout_width="120dp"
             android:layout_height="40dp"
             android:hint="Calo"
@@ -57,7 +57,7 @@
 
     <Button
         android:layout_marginTop="10dp"
-        android:id="@+id/button_upload_add"
+        android:id="@+id/button_upload_edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="upload"
@@ -70,7 +70,7 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btn_chooseVideo_add"
+            android:id="@+id/btn_chooseVideo_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -84,7 +84,7 @@
         </Button>
 
         <Button
-            android:id="@+id/btn_chooseImage_add"
+            android:id="@+id/btn_chooseImage_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -102,7 +102,7 @@
 
     <ProgressBar
         android:visibility="invisible"
-        android:id="@+id/progressBar_add"
+        android:id="@+id/progressBar_edit"
         android:layout_marginTop="20dp"
         android:layout_width="350dp"
         android:layout_height="30dp"
