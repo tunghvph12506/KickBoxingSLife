@@ -4,18 +4,18 @@
 
         <item android:id="@+id/navigation_tap_nguc"
             android:icon="@drawable/chest_bottomlogo"
-            android:title="@string/bottomnav_chest"/>
+            android:title="@string/admin_bottomnav_chest"/>
         <item android:id="@+id/navigation_tap_bung"
             android:icon="@drawable/stomach_bottomlogo"
-            android:title="@string/bottomnav_stomach"/>
+            android:title="@string/admin_bottomnav_stomach"/>
         <item android:id="@+id/navigation_tap_tay"
             android:icon="@drawable/hand_bottomlogo"
-            android:title="@string/bottomnav_hand"/>
+            android:title="@string/admin_bottomnav_hand"/>
         <item android:id="@+id/navigation_tap_chan"
             android:icon="@drawable/leg_bottomlogo"
-            android:title="@string/bottomnav_leg"/>
+            android:title="@string/admin_bottomnav_leg"/>
         <item android:id="@+id/navigation_dia_diem"
             android:icon="@drawable/map_bottomlogo"
-            android:title="@string/bottomnav_map"/>
+            android:title="@string/admin_bottomnav_map"/>
     </group>
 </menu>

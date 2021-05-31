@@ -28,7 +28,7 @@
             android:textAlignment="center"
             android:paddingTop="40px"
             android:textStyle="bold"
-            android:text="@string/tv_stomachchallenge"
+            android:text="@string/home_tv_stomachchallenge"
             android:textColor="@color/white"
             android:textSize="34sp"
             android:gravity="center_horizontal"/>

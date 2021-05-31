@@ -68,7 +68,7 @@ public class EditActivity extends AppCompatActivity {
     ActionBar toolbar;
     ImageView imageView;
     Bitmap bitmap;
-    String dataPath,group,name,videoUrl,imageUrl,search,calo;
+    String dataPath,group,groupVn,name,videoUrl,imageUrl,search,calo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +77,7 @@ public class EditActivity extends AppCompatActivity {
         Bundle gets = getIntent().getExtras();
         dataPath = gets.getString("dataPath");
         group = gets.getString("group");
+        groupVn = gets.getString("groupVn");
         name = gets.getString("name");
         videoUrl = gets.getString("videoUrl");
         imageUrl = gets.getString("imageUrl");
@@ -98,7 +99,7 @@ public class EditActivity extends AppCompatActivity {
 
         edtName.setText(name);
         edtCalo.setText(calo);
-        tvChallenge.setText(group+"Challenge");
+        tvChallenge.setText("Tập "+groupVn);
         videoUri = Uri.parse(videoUrl);
         imageUri = Uri.parse(imageUrl);
         databaseReference = FirebaseDatabase.getInstance().getReference(dataPath);
@@ -210,6 +211,8 @@ public class EditActivity extends AppCompatActivity {
             progressBar.setVisibility(View.VISIBLE);
             final StorageReference referenceVideo = storageReferenceVideo.child(search +"_"+group+ "." + getExt(videoUri));
             final StorageReference referenceImage = storageReferenceImage.child(search +"_"+group+ "." + getExt(imageUri));
+            Log.e("a",""+referenceImage);
+            Log.e("b",""+referenceVideo);
             uploadTaskVideo = referenceVideo.putFile(videoUri);
             uploadTaskImage = referenceImage.putFile(imageUri);
 
@@ -254,14 +257,14 @@ public class EditActivity extends AppCompatActivity {
                                                     exercise.setImageUrl(downloadUrl.toString());
                                                     databaseReference.child(search).setValue(exercise);
                                                     progressBar.setVisibility(View.INVISIBLE);
-                                                    Toast.makeText(EditActivity.this,"Data updated", Toast.LENGTH_SHORT).show();
+                                                    Toast.makeText(EditActivity.this,R.string.edit_toast_updated, Toast.LENGTH_SHORT).show();
                                                 }
                                             }
                                         });
 
                             }else
                             {
-                                Toast.makeText(EditActivity.this,"Failed", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(EditActivity.this,R.string.edit_toast_failed, Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
@@ -269,7 +272,7 @@ public class EditActivity extends AppCompatActivity {
 
         else
         {
-            Toast.makeText(EditActivity.this,"All field are required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditActivity.this,R.string.edit_toast_require, Toast.LENGTH_SHORT).show();
         }
 
     }

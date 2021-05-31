@@ -45,8 +45,9 @@ public class ChestAdminFragment extends Fragment {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
-    String dataPath = "Data/Chest";
+    String dataPath = "Exercise/Chest";
     String group = "Chest";
+    String groupVn = "Ngực";
     List<Exercise> listExer;
     FirebaseStorage firebaseStorage;
 
@@ -97,6 +98,7 @@ public class ChestAdminFragment extends Fragment {
                         Intent intent = new Intent(getActivity(), EditActivity.class);
                         intent.putExtra("dataPath",dataPath);
                         intent.putExtra("group",group);
+                        intent.putExtra("groupVn",groupVn);
                         intent.putExtra("name",listExer.get(position).getName());
                         intent.putExtra("videoUrl",listExer.get(position).getVideoUrl());
                         intent.putExtra("imageUrl",listExer.get(position).getImageUrl());
@@ -125,11 +127,11 @@ public class ChestAdminFragment extends Fragment {
 
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
 
-        builder.setTitle("Confirm Delete").setMessage("Do you want to delete this exercise");
+        builder.setTitle(R.string.admin_dialog_title).setMessage(R.string.admin_dialog_message);
 
         builder.setCancelable(true);
 
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        builder.setPositiveButton(R.string.admin_dialog_yes, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 DatabaseReference dref = database.getReference(dataPath).child(listExer.get(pos).getSearch());
                 StorageReference imageRef = firebaseStorage.getReferenceFromUrl(listExer.get(pos).getImageUrl());
@@ -139,7 +141,7 @@ public class ChestAdminFragment extends Fragment {
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                         imageRef.delete();
                         videoRef.delete();
-                        Toast.makeText(context,"Deleted", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(context,R.string.admin_deleted, Toast.LENGTH_SHORT).show();
                     }
                 });
                 listExer.remove(pos);
@@ -147,7 +149,7 @@ public class ChestAdminFragment extends Fragment {
             }
         });
 
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(R.string.admin_dialog_no, new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int id) {
                 dialog.dismiss();
             }

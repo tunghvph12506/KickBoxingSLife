@@ -87,14 +87,14 @@ public class AddActivity extends AppCompatActivity {
         videoView.start();
 
         toolbar = getSupportActionBar();
-        toolbar.setTitle(R.string.title_add);
+        toolbar.setTitle(R.string.add_title);
         toolbar.setDisplayHomeAsUpEnabled(true);
 
         list = new ArrayList<>();
-        list.add("Chest Challenge");
-        list.add("Stomach Challenge");
-        list.add("Hand Challenge");
-        list.add("Leg Challenge");
+        list.add(getResources().getString(R.string.add_spinner_chest));
+        list.add(getResources().getString(R.string.add_spinner_stomach));
+        list.add(getResources().getString(R.string.add_spinner_hand));
+        list.add(getResources().getString(R.string.add_spinner_leg));
         ArrayAdapter spinnerAdapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,list);
         spinnerChallenge.setAdapter(spinnerAdapter);
 
@@ -217,7 +217,7 @@ public class AddActivity extends AppCompatActivity {
                 public void onDataChange(DataSnapshot snapshot) {
                     if(snapshot.exists())
                     {
-                        Toast.makeText(AddActivity.this,"Existed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(AddActivity.this,R.string.add_toast_existed, Toast.LENGTH_SHORT).show();
                     }
                     else
                     {
@@ -268,14 +268,14 @@ public class AddActivity extends AppCompatActivity {
                                                                 exercise.setImageUrl(downloadUrl.toString());
                                                                 databaseReference.child(search).setValue(exercise);
                                                                 progressBar.setVisibility(View.INVISIBLE);
-                                                                Toast.makeText(AddActivity.this,"Data saved", Toast.LENGTH_SHORT).show();
+                                                                Toast.makeText(AddActivity.this,R.string.add_toast_added, Toast.LENGTH_SHORT).show();
                                                             }
                                                         }
                                                     });
 
                                         }else
                                         {
-                                            Toast.makeText(AddActivity.this,"Failed", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(AddActivity.this,R.string.add_toast_failed, Toast.LENGTH_SHORT).show();
                                         }
                                     }
                                 });
@@ -291,7 +291,7 @@ public class AddActivity extends AppCompatActivity {
         }
         else
         {
-            Toast.makeText(AddActivity.this,"All field are required", Toast.LENGTH_SHORT).show();
+            Toast.makeText(AddActivity.this,R.string.add_toast_require, Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -311,7 +311,7 @@ public class AddActivity extends AppCompatActivity {
     private void ChangePathFireBase()
     {
         String name = edtName.getText().toString().toLowerCase();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Data/"+group);
-        databaseReferenceCheck = FirebaseDatabase.getInstance().getReference("Data/"+group+"/"+name);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Exercise/"+group);
+        databaseReferenceCheck = FirebaseDatabase.getInstance().getReference("Exercise/"+group+"/"+name);
     }
 }

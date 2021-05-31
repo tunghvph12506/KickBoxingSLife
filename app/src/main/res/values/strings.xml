@@ -4,9 +4,9 @@
 
 
     <!-- mainActivity-->
-    <string name="title_home">Home</string>
-    <string name="title_report">Report</string>
-    <string name="title_advertisement">Advertisement</string>
+    <string name="main_title_home">Bài tập</string>
+    <string name="main_title_report">Thông số</string>
+    <string name="main_title_advertisement">Giới thiệu</string>
 
     <!-- mainActivity-->
 
@@ -16,21 +16,51 @@
 
 
     <!-- HomeFragment-->
-    <string name="tv_stomachchallenge">Stomach Challenge</string>
-    <string name="tv_chestchallenge">Chest Challenge</string>
-    <string name="tv_handchallenge">Hand Challenge</string>
-    <string name="tv_legchallenge">Leg Challenge</string>
+    <string name="home_tv_stomachchallenge">Tập bụng</string>
+    <string name="home_tv_chestchallenge">Tập ngực</string>
+    <string name="home_tv_handchallenge">Tập tay</string>
+    <string name="home_tv_legchallenge">Tập chân</string>
     <!-- HomeFragment-->
 
-    <!-- navigation_admin-->
-    <string name="bottomnav_chest">ChestChallenge</string>
-    <string name="bottomnav_hand">HandChallenge</string>
-    <string name="bottomnav_stomach">StomachChallenge</string>
-    <string name="bottomnav_leg">LegChallenge</string>
-    <string name="bottomnav_map">Map</string>
-    <!-- navigation_admin-->
+    <!--AdminActivity-->
+    <string name="admin_bottomnav_chest">Tập ngực</string>
+    <string name="admin_bottomnav_hand">Tập tay</string>
+    <string name="admin_bottomnav_stomach">Tập bụng</string>
+    <string name="admin_bottomnav_leg">Tập chân</string>
+    <string name="admin_bottomnav_map">Địa điểm</string>
+    <string name="admin_dialog_title">Xác nhận</string>
+    <string name="admin_dialog_message">Bạn có muốn xóa bài tập này?</string>
+    <string name="admin_dialog_yes">Có</string>
+    <string name="admin_dialog_no">Không</string>
+    <string name="admin_deleted">Đã xóa bài tập</string>
+    <!--AdminActivity-->
 
     <!-- AddActivity -->
-    <string name="title_add">Add Exercise</string>
+    <string name="add_title">Thêm bài tập</string>
+    <string name="add_spinner_chest">Tập ngực</string>
+    <string name="add_spinner_stomach">Tập bụng</string>
+    <string name="add_spinner_hand">Tập tay</string>
+    <string name="add_spinner_leg">Tập chân</string>
+    <string name="add_toast_existed">Bài tập đã tồn tại</string>
+    <string name="add_toast_added">Bài tập đã được thêm</string>
+    <string name="add_toast_failed">Thêm bài tập thất bại</string>
+    <string name="add_toast_require">Không được bỏ trống</string>
+    <string name="add_edt_hintname">Tên video</string>
+    <string name="add_edt_hintcalo">Calo</string>
+    <string name="add_btn_upload">Thêm bài tập</string>
+    <string name="add_btn_choosevideo">Chọn video</string>
+    <string name="add_btn_chooseimage">Chọn ảnh</string>
+    <!-- AddActivity -->
+
+    <!-- EditActivity -->
+    <string name="edit_toast_updated">Bài tập đã được cập nhật</string>
+    <string name="edit_toast_failed">Cập nhật bài tập thất bại</string>
+    <string name="edit_toast_require">Không được bỏ trống</string>
+    <string name="edit_edt_hintname">Tên video</string>
+    <string name="edit_edt_hintcalo">Calo</string>
+    <string name="edit_btn_upload">Cập nhật</string>
+    <string name="edit_btn_choosevideo">Chọn video</string>
+    <string name="edit_btn_chooseimage">Chọn ảnh</string>
+
     <!-- AddActivity -->
 </resources>
