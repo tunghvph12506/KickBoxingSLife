@@ -74,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
                             Toast.makeText(SignUpActivity.this, R.string.sign_up_toast_success, Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
                             startActivity(i);
+                            finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override

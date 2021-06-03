@@ -74,6 +74,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
                             Toast.makeText(ChangePasswordActivity.this,R.string.change_password_toast_success, Toast.LENGTH_SHORT).show();
                             Intent in=new Intent(ChangePasswordActivity.this,SignInActivity.class);
                             startActivity(in);
+                            finish();
                         }
                     }
                 }

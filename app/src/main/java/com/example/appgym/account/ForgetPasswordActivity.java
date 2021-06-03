@@ -67,6 +67,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                                 b.putString("tentk",list.get(i).getUsername());
                                 intent.putExtras(b);
                                 startActivity(intent);
+                                finish();
                                 break;
                             }
                             else

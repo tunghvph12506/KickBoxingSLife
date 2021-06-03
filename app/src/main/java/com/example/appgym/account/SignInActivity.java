@@ -65,6 +65,7 @@ public class SignInActivity extends AppCompatActivity {
                             Toast.makeText(SignInActivity.this, R.string.sign_in_toast_welcomeadmin, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignInActivity.this, AdminActivity.class);
                             startActivity(intent);
+                            finish();
                             break;
                         } else if (username.equals(list.get(i).getUsername()) && password.equals(list.get(i).getPassword())) {
 
@@ -74,6 +75,7 @@ public class SignInActivity extends AppCompatActivity {
                             b.putString("username", list.get(i).getUsername());
                             intent.putExtras(b);
                             startActivity(intent);
+                            finish();
                             break;
                         } else {
                             edPassword.setError(getResources().getString(R.string.sign_in_error_notcorrectpassword));
