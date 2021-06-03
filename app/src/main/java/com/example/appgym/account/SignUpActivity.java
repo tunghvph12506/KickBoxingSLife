@@ -35,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
         edPhone = findViewById(R.id.ed_phone);
         edQuestion = findViewById(R.id.ed_question);
         database = FirebaseDatabase.getInstance();
-
+        resetError();
     }
 
     public void Sign_up(View view) {

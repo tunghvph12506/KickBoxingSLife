@@ -31,13 +31,14 @@ public class ForgetPasswordActivity extends AppCompatActivity {
         setContentView(R.layout.activity_forget_password);
         ed_reply = findViewById(R.id.ed_reply_for_get_pas);
         ed_username = findViewById(R.id.ed_username_for_get_pas);
+        resetError();
     }
 
 
     public void ForgetPassword(View view) {
         resetError();
-        String username=ed_username.getEditText().getText().toString();
-        String reply=ed_reply.getEditText().getText().toString();
+        String username = ed_username.getEditText().getText().toString();
+        String reply = ed_reply.getEditText().getText().toString();
         if(username.length()==0){
             ed_username.setError(getResources().getString(R.string.forget_password_error_require));
         }else if(username.length()<6){
@@ -53,18 +54,30 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                     Account account=data.getValue(Account.class);
                     list.add(account);
                 }
-                for (int i=0;i<list.size();i++){
-
-                    if(username.equals(list.get(i).getUsername())&&reply.equals(list.get(i).getQuestion())){
-                        Log.d("TAG", "onDataChange: "+list.get(i).getQuestion());
-                        Intent intent =new Intent(ForgetPasswordActivity.this,ChangePasswordActivity.class);
-                        Bundle b=new Bundle();
-                        b.putString("tentk",list.get(i).getUsername());
-                        intent.putExtras(b);
-                        startActivity(intent);
-                    }else {
+                for (int i=0;i<list.size();i++)
+                {
+                    if(username.equals(list.get(i).getUsername())){
+                        {
+                            ed_username.setError("");
+                            if(reply.equals(list.get(i).getQuestion()))
+                            {
+                                Log.d("TAG", "onDataChange: "+list.get(i).getQuestion());
+                                Intent intent =new Intent(ForgetPasswordActivity.this,ChangePasswordActivity.class);
+                                Bundle b=new Bundle();
+                                b.putString("tentk",list.get(i).getUsername());
+                                intent.putExtras(b);
+                                startActivity(intent);
+                                break;
+                            }
+                            else
+                            {
+                                ed_reply.setError(getResources().getString(R.string.forget_password_error_notcorrectreply));
+                                break;
+                            }
+                        }
+                    }
+                    else {
                         ed_username.setError(getResources().getString(R.string.forget_password_error_notcorrectusername));
-                        ed_reply.setError(getResources().getString(R.string.forget_password_error_notcorrectreply));
                     }
                 }
             }
@@ -78,7 +91,7 @@ public class ForgetPasswordActivity extends AppCompatActivity {
 
     private void resetError()
     {
-        ed_reply.setError("");
         ed_username.setError("");
+        ed_reply.setError("");
     }
 }

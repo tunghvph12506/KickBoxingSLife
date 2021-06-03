@@ -39,6 +39,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         tentk1=b.getString("tentk");
         tv_tk=findViewById(R.id.tv_username);
         tv_tk.setText(tentk1);
+        resetError();
     }
     private void GetData() {
         resetError();

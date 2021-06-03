@@ -35,6 +35,7 @@ public class SignInActivity extends AppCompatActivity {
         setTitle(R.string.sign_in_title);
         edUserName = findViewById(R.id.ed_username_sign_in);
         edPassword = findViewById(R.id.ed_password_sign_in);
+        resetError();
     }
 
     public void Sign_in(View view) {
