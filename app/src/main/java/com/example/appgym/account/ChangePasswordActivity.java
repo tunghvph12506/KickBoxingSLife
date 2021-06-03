@@ -87,4 +87,10 @@ public class ChangePasswordActivity extends AppCompatActivity {
     public void SavePassword(View view) {
         GetData();
     }
+
+    private void resetError()
+    {
+        password.setError("");
+        passwordcheck.setError("");
+    }
 }

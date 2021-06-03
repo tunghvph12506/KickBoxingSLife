@@ -74,4 +74,10 @@ public class ForgetPasswordActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void resetError()
+    {
+        ed_reply.setError("");
+        ed_username.setError("");
+    }
 }

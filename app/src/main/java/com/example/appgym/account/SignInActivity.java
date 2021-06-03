@@ -24,61 +24,63 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SignInActivity extends AppCompatActivity {
-    TextInputLayout edUserName,edPassword;
-    List<Account> list=new ArrayList<>();
-    FirebaseDatabase database=FirebaseDatabase.getInstance();
+    TextInputLayout edUserName, edPassword;
+    List<Account> list = new ArrayList<>();
+    FirebaseDatabase database = FirebaseDatabase.getInstance();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
         setTitle(R.string.sign_in_title);
-        edUserName=findViewById(R.id.ed_username_sign_in);
-        edPassword=findViewById(R.id.ed_password_sign_in);
+        edUserName = findViewById(R.id.ed_username_sign_in);
+        edPassword = findViewById(R.id.ed_password_sign_in);
     }
+
     public void Sign_in(View view) {
-        String username=edUserName.getEditText().getText().toString();
-        String password=edPassword.getEditText().getText().toString();
-        DatabaseReference mdata=database.getReference("Account");
-        if(username.length()==0){
+        resetError();
+        String username = edUserName.getEditText().getText().toString();
+        String password = edPassword.getEditText().getText().toString();
+        DatabaseReference mdata = database.getReference("Account");
+        if (username.length() == 0) {
             edUserName.setError(getResources().getString(R.string.sign_in_error_nousername));
-        }else if(password.length()==0){
+        } else if (password.length() == 0) {
             edPassword.setError(getResources().getString(R.string.sign_up_error_nopassword));
-        }else if(username.length() <6){
+        } else if (username.length() < 6) {
             edUserName.setError(getResources().getString(R.string.sign_up_error_wrongusername));
-        }else if(password.length() <6){
+        } else if (password.length() < 6) {
             edPassword.setError(getResources().getString(R.string.sign_up_error_wrongpassword));
-        }else {
+        } else {
             mdata.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot data:snapshot.getChildren() ){
-                        Account account=data.getValue(Account.class);
+                    for (DataSnapshot data : snapshot.getChildren()) {
+                        Account account = data.getValue(Account.class);
                         list.add(account);
                     }
-                    for (int i = 0; i <list.size() ; i++) {
-                        Log.d("TAG", "onDataChange: "+username);
-                        if(username.equals("admin999")&&password.equals("admin999")){
+                    for (int i = 0; i < list.size(); i++) {
+                        Log.d("TAG", "onDataChange: " + username);
+                        if (username.equals("admin999") && password.equals("admin999")) {
                             Toast.makeText(SignInActivity.this, R.string.sign_in_toast_welcomeadmin, Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(SignInActivity.this, AdminActivity.class);
+                            Intent intent = new Intent(SignInActivity.this, AdminActivity.class);
                             startActivity(intent);
                             break;
-                        }
-                        else if(username.equals(list.get(i).getUsername()) && password.equals(list.get(i).getPassword())) {
+                        } else if (username.equals(list.get(i).getUsername()) && password.equals(list.get(i).getPassword())) {
 
                             Toast.makeText(SignInActivity.this, R.string.sign_in_toast_success, Toast.LENGTH_SHORT).show();
-                            Intent intent=new Intent(SignInActivity.this, MainActivity.class);
-                            Bundle b=new Bundle();
-                            b.putString("username",list.get(i).getUsername());
+                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
+                            Bundle b = new Bundle();
+                            b.putString("username", list.get(i).getUsername());
                             intent.putExtras(b);
                             startActivity(intent);
                             break;
-                        }
-                        else {
+                        } else {
                             edPassword.setError(getResources().getString(R.string.sign_in_error_notcorrectpassword));
                             edUserName.setError(getResources().getString(R.string.sign_in_error_notcorrectusername));
                         }
                     }
                 }
+
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
                     Toast.makeText(SignInActivity.this, R.string.sign_in_toast_failed, Toast.LENGTH_SHORT).show();
@@ -89,12 +91,18 @@ public class SignInActivity extends AppCompatActivity {
     }
 
     public void ForgetPassword(View view) {
-        Intent i=new Intent(SignInActivity.this,ForgetPasswordActivity.class);
+        Intent i = new Intent(SignInActivity.this, ForgetPasswordActivity.class);
         startActivity(i);
     }
 
     public void clickSignUp(View view) {
-        Intent i=new Intent(SignInActivity.this,SignUpActivity.class);
+        Intent i = new Intent(SignInActivity.this, SignUpActivity.class);
         startActivity(i);
+    }
+
+    private void resetError()
+    {
+        edUserName.setError("");
+        edPassword.setError("");
     }
 }
