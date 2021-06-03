@@ -12,11 +12,7 @@
         <activity android:name=".account.ChangePasswordActivity"></activity>
         <activity android:name=".account.ForgetPasswordActivity" />
         <activity android:name=".account.SignInActivity" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".account.SignUpActivity" />
         <activity android:name=".admin.EditActivity" />
@@ -31,7 +27,13 @@
         <activity android:name=".MainActivity" />
         <activity
             android:name=".splash.SplashActivity"
-            android:theme="@style/Theme.AppGYM.NoActionBar" />
+            android:theme="@style/Theme.AppGYM.NoActionBar" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
