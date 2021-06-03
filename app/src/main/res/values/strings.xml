@@ -106,7 +106,7 @@
     <!-- ForgetPasswordActivity -->
     <string name="forget_password_error_require">Không được bỏ trống!</string>
     <string name="forget_password_error_wrongusername">Tài khoản không chính xác!</string>
-    <string name="forget_password_error_notcorrectusername">Tài khoản không chính xác!</string>
+    <string name="forget_password_error_notcorrectusername">Tài khoản không tồn tại!</string>
     <string name="forget_password_error_notcorrectreply">Câu trả lời không chính xác!</string>
     <string name="forget_password_toast_failed">Lấy mật khẩu thất bại!</string>
     <string name="forget_password_button_getpassword">Lấy lại mật khẩu</string>

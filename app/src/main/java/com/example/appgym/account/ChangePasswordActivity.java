@@ -41,6 +41,7 @@ public class ChangePasswordActivity extends AppCompatActivity {
         tv_tk.setText(tentk1);
     }
     private void GetData() {
+        resetError();
         String password12=password.getEditText().getText().toString();
         String passlai12=passwordcheck.getEditText().getText().toString();
         if(password12.length()==0){

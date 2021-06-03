@@ -34,7 +34,8 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     }
 
 
-    public void forGetPassword(View view) {
+    public void ForgetPassword(View view) {
+        resetError();
         String username=ed_username.getEditText().getText().toString();
         String reply=ed_reply.getEditText().getText().toString();
         if(username.length()==0){
