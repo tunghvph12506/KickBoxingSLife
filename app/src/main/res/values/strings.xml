@@ -62,5 +62,71 @@
     <string name="edit_btn_choosevideo">Chọn video</string>
     <string name="edit_btn_chooseimage">Chọn ảnh</string>
 
-    <!-- AddActivity -->
+    <!-- EditActivity -->
+
+    <!-- SignUpActivity -->
+    <string name="sign_up_title">Đăng Ký</string>
+    <string name="sign_up_error_nousername">Vui lòng nhập tài khoản!</string>
+    <string name="sign_up_error_wrongusername">Tài khoản tối thiểu 6 ký tự!</string>
+    <string name="sign_up_error_nopassword">Mật khẩu tối thiểu 6 ký tự!</string>
+    <string name="sign_up_error_wrongpassword">Mật khẩu bạn nhập không đúng!</string>
+    <string name="sign_up_error_noquestion">Vui lòng nhập câu trả lời!</string>
+    <string name="sign_up_error_nophone">Vui lòng nhập số điện thoại!</string>
+    <string name="sign_up_error_wrongphone">Số điện thoại không hợp lệ!</string>
+    <string name="sign_up_toast_success">Thêm tài khoản thành công</string>
+    <string name="sign_up_toast_failed">Thêm tài khoản thất bại</string>
+    <string name="sign_up_button_signin">Đăng Ký</string>
+    <string name="sign_up_ed_username">Tài Khoản</string>
+    <string name="sign_up_ed_password">Mật Khẩu</string>
+    <string name="sign_up_ed_passwordcheck">Nhập Lại Mật Khẩu</string>
+    <string name="sign_up_ed_phone">Số Điện Thoại</string>
+    <string name="sign_up_ed_question">Câu Hỏi:Món ăn ưa thích của bạn là gì?</string>
+
+    <!-- SignUpActivity -->
+
+    <!-- SignInActivity -->
+    <string name="sign_in_title">Đăng Nhập</string>
+    <string name="sign_in_error_nousername">Vui lòng nhập tài khoản!</string>
+    <string name="sign_in_error_wrongusername">Tài khoản tối thiểu 6 ký tự!</string>
+    <string name="sign_in_error_nopassword">Mật khẩu tối thiểu 6 ký tự!</string>
+    <string name="sign_in_error_wrongpassword">Mật khẩu bạn nhập không đúng!</string>
+    <string name="sign_in_error_notcorrectusername">Tài khoản không chính xác!</string>
+    <string name="sign_in_error_notcorrectpassword">Mật khẩu không chính xác!</string>
+    <string name="sign_in_toast_welcomeadmin">Chào mừng Admin</string>
+    <string name="sign_in_toast_success">Đăng Nhập Thành công</string>
+    <string name="sign_in_toast_failed">Đăng Nhập Thất Bại</string>
+    <string name="sign_in_button_signin">Đăng Nhập</string>
+    <string name="sign_in_ed_username">Tài Khoản</string>
+    <string name="sign_in_ed_forgetpassword">Quên Mật Khẩu ?</string>
+    <string name="sign_in_ed_sign_out">Đăng ký tài khoản</string>
+    <string name="sign_in_ed_password">Mật Khẩu</string>
+
+    <!-- SignInActivity -->
+
+    <!-- ForgetPasswordActivity -->
+    <string name="forget_password_error_require">Không được bỏ trống!</string>
+    <string name="forget_password_error_wrongusername">Tài khoản không chính xác!</string>
+    <string name="forget_password_error_notcorrectusername">Tài khoản không chính xác!</string>
+    <string name="forget_password_error_notcorrectreply">Câu trả lời không chính xác!</string>
+    <string name="forget_password_toast_failed">Lấy mật khẩu thất bại!</string>
+    <string name="forget_password_button_getpassword">Lấy lại mật khẩu</string>
+    <string name="forget_password_username">Tài Khoản</string>
+    <string name="forget_password_phone">Số Điện Thoại</string>
+    <string name="forget_password_reply">Trả lời</string>
+    <string name="forget_password_question">Câu hỏi</string>
+    <string name="forget_password_securityquestion">CÂU HỎI BẢO MẬT</string>
+
+    <!-- ForgetPasswordActivity -->
+
+    <!-- ChangePasswordActivity -->
+    <string name="change_password_error_nopassword">Vui lòng nhập mật khẩu!</string>
+    <string name="change_password_error_wrongpassword">Mật khẩu tối thiểu 6 ký tự!</string>
+    <string name="change_password_error_notcorrectpassword">Mật khẩu bạn nhập không đúng!</string>
+    <string name="change_password_toast_success">Đổi mật khẩu thành công</string>
+    <string name="change_password_button_changepassword">Đổi mật khẩu</string>
+    <string name="change_password_ed_username">Tên tài khoản</string>
+    <string name="change_password_password">Mật khẩu mới</string>
+    <string name="change_password_password_check">Nhập lại mật khẩu</string>
+
+    <!-- ChangePasswordActivity -->
 </resources>

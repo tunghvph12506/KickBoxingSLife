@@ -118,7 +118,7 @@ public class EditActivity extends AppCompatActivity {
         btnUpload.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                UploadVideo();
+                UploadExercise();
             }
         });
     }
@@ -198,7 +198,7 @@ public class EditActivity extends AppCompatActivity {
         return mimeTypeMap.getExtensionFromMimeType(contentResolver.getType(uri));
     }
 
-    private void UploadVideo()
+    private void UploadExercise()
     {
         String videoName = edtName.getText().toString();
         String calo = edtCalo.getText().toString();
