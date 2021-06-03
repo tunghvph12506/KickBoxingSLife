@@ -56,23 +56,24 @@ public class SignInActivity extends AppCompatActivity {
                         list.add(account);
                     }
                     for (int i = 0; i <list.size() ; i++) {
-                        if(username.equals(list.get(i).getUsername()) && password.equals(list.get(i).getPassword())) {
-                            if(username.equals("admin999")&&password.equals("admin999")){
-                                Toast.makeText(SignInActivity.this, R.string.sign_in_toast_welcomeadmin, Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(SignInActivity.this, AdminActivity.class);
-                                startActivity(intent);
-                                break;
-                            }else {
-                                ;      Log.d("TAG", "onDataChange: "+list);
-                                Toast.makeText(SignInActivity.this, R.string.sign_in_toast_success, Toast.LENGTH_SHORT).show();
-                                Intent intent=new Intent(SignInActivity.this, MainActivity.class);
-                                Bundle b=new Bundle();
-                                b.putString("username",list.get(i).getUsername());
-                                intent.putExtras(b);
-                                startActivity(intent);
-                                break;
-                            }
-                        }else {
+                        Log.d("TAG", "onDataChange: "+username);
+                        if(username.equals("admin999")&&password.equals("admin999")){
+                            Toast.makeText(SignInActivity.this, R.string.sign_in_toast_welcomeadmin, Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(SignInActivity.this, AdminActivity.class);
+                            startActivity(intent);
+                            break;
+                        }
+                        else if(username.equals(list.get(i).getUsername()) && password.equals(list.get(i).getPassword())) {
+
+                            Toast.makeText(SignInActivity.this, R.string.sign_in_toast_success, Toast.LENGTH_SHORT).show();
+                            Intent intent=new Intent(SignInActivity.this, MainActivity.class);
+                            Bundle b=new Bundle();
+                            b.putString("username",list.get(i).getUsername());
+                            intent.putExtras(b);
+                            startActivity(intent);
+                            break;
+                        }
+                        else {
                             edPassword.setError(getResources().getString(R.string.sign_in_error_notcorrectpassword));
                             edUserName.setError(getResources().getString(R.string.sign_in_error_notcorrectusername));
                         }
