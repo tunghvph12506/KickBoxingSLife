@@ -1,53 +1,18 @@
 package com.example.appgym.admin.fragment.stomach;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.appgym.R;
-import com.example.appgym.admin.EditActivity;
-import com.example.appgym.admin.ViewHolder_Exercise;
-import com.example.appgym.admin.activity.ChestDay1Activity;
-import com.example.appgym.admin.activity.ChestDay2Activity;
-import com.example.appgym.admin.activity.ChestDay3Activity;
-import com.example.appgym.admin.activity.ChestDay4Activity;
-import com.example.appgym.admin.activity.ChestDay5Activity;
-import com.example.appgym.admin.activity.ChestDay6Activity;
-import com.example.appgym.admin.activity.ChestDay7Activity;
-import com.example.appgym.admin.activity.StomachDay1Activity;
-import com.example.appgym.admin.activity.StomachDay2Activity;
-import com.example.appgym.admin.activity.StomachDay3Activity;
-import com.example.appgym.admin.activity.StomachDay4Activity;
-import com.example.appgym.admin.activity.StomachDay5Activity;
-import com.example.appgym.admin.activity.StomachDay6Activity;
-import com.example.appgym.admin.activity.StomachDay7Activity;
-import com.example.appgym.model.Exercise;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.appgym.admin.activity.ShowExerciseActivity;
 
 
 public class StomachAdminFragment extends Fragment implements View.OnClickListener {
@@ -88,37 +53,65 @@ public class StomachAdminFragment extends Fragment implements View.OnClickListen
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(getActivity(), ShowExerciseActivity.class);
         switch (v.getId())
         {
             case R.id.btn_stomachadmin_day1:
-                Intent intent = new Intent(getActivity(), StomachDay1Activity.class);
+                intent.putExtra("dataPath","Exercise/Stomach/Day1");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day1");
+                intent.putExtra("dayVn","Ngày 1");
                 startActivity(intent);
                 break;
             case R.id.btn_stomachadmin_day2:
-                Intent intent2 = new Intent(getActivity(), StomachDay2Activity.class);
-                startActivity(intent2);
+                intent.putExtra("dataPath","Exercise/Stomach/Day2");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day2");
+                intent.putExtra("dayVn","Ngày 2");
+                startActivity(intent);
                 break;
             case R.id.btn_stomachadmin_day3:
-                Intent intent3 = new Intent(getActivity(), StomachDay3Activity.class);
-                startActivity(intent3);
+                intent.putExtra("dataPath","Exercise/Stomach/Day3");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day3");
+                intent.putExtra("dayVn","Ngày 3");
+                startActivity(intent);
                 break;
             case R.id.btn_stomachadmin_day4:
-                Intent intent4 = new Intent(getActivity(), StomachDay4Activity.class);
-                startActivity(intent4);
+                intent.putExtra("dataPath","Exercise/Stomach/Day4");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day4");
+                intent.putExtra("dayVn","Ngày 4");
+                startActivity(intent);
                 break;
             case R.id.btn_stomachadmin_day5:
-                Intent intent5 = new Intent(getActivity(), StomachDay5Activity.class);
-                startActivity(intent5);
+                intent.putExtra("dataPath","Exercise/Stomach/Day5");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day5");
+                intent.putExtra("dayVn","Ngày 5");
+                startActivity(intent);
                 break;
             case R.id.btn_stomachadmin_day6:
-                Intent intent6 = new Intent(getActivity(), StomachDay6Activity.class);
-                startActivity(intent6);
+                intent.putExtra("dataPath","Exercise/Stomach/Day6");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day6");
+                intent.putExtra("dayVn","Ngày 6");
+                startActivity(intent);
                 break;
             case R.id.btn_stomachadmin_day7:
-                Intent intent7 = new Intent(getActivity(), StomachDay7Activity.class);
-                startActivity(intent7);
+                intent.putExtra("dataPath","Exercise/Stomach/Day7");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day7");
+                intent.putExtra("dayVn","Ngày 7");
+                startActivity(intent);
                 break;
         }
-
     }
 }

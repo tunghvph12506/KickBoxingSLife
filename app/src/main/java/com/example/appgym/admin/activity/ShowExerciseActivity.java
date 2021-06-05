@@ -38,30 +38,33 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HandDay2Activity extends AppCompatActivity {
+public class ShowExerciseActivity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     ActionBar toolbar;
-    String dataPath = "Exercise/Hand/Day2";
-    String group = "Hand";
-    String day = "Day2";
-    String groupVn = "Tay";
-    String dayVn = "Ngày 2";
+    String dataPath,group,groupVn,day,dayVn;
     List<Exercise> listExer;
     FirebaseStorage firebaseStorage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_hand_day2);
+        setContentView(R.layout.activity_show_activity);
 
-        recyclerView = findViewById(R.id.rv_hand_day2);
+        Bundle gets = getIntent().getExtras();
+        dataPath = gets.getString("dataPath");
+        group = gets.getString("group");
+        groupVn = gets.getString("groupVn");
+        day = gets.getString("day");
+        dayVn = gets.getString("dayVn");
+
+        recyclerView = findViewById(R.id.rv_exercise);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         toolbar = getSupportActionBar();
-        toolbar.setTitle(R.string.btn_day2);
+        toolbar.setTitle(dayVn);
         toolbar.setDisplayHomeAsUpEnabled(true);
 
         databaseReference = database.getReference().child(dataPath);
@@ -78,7 +81,7 @@ public class HandDay2Activity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder_Exercise holder, int position, @NonNull Exercise model) {
-                holder.setItem(HandDay2Activity.this,model.getName(),model.getVideoUrl(),model.getImageUrl(),model.getSearch(),model.getCalo(),model.getDay());
+                holder.setItem(ShowExerciseActivity.this,model.getName(),model.getVideoUrl(),model.getImageUrl(),model.getSearch(),model.getCalo(),model.getDay());
             }
 
             @NonNull
@@ -90,7 +93,7 @@ public class HandDay2Activity extends AppCompatActivity {
                 viewHolder_exercise.setOnClickListener(new ViewHolder_Exercise.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(HandDay2Activity.this, EditActivity.class);
+                        Intent intent = new Intent(ShowExerciseActivity.this, EditActivity.class);
                         intent.putExtra("dataPath",dataPath);
                         intent.putExtra("group",group);
                         intent.putExtra("groupVn",groupVn);
@@ -106,7 +109,7 @@ public class HandDay2Activity extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        showAlertDialog(HandDay2Activity.this, position);
+                        showAlertDialog(ShowExerciseActivity.this, position);
                     }
                 });
 
@@ -117,6 +120,7 @@ public class HandDay2Activity extends AppCompatActivity {
 
         firebaseRecyclerAdapter.startListening();
         recyclerView.setAdapter(firebaseRecyclerAdapter);
+
     }
 
     public void showAlertDialog(final Context context, int pos)  {
@@ -202,7 +206,7 @@ public class HandDay2Activity extends AppCompatActivity {
                 return true;
 
             case R.id.add_icon:
-                Intent intent = new Intent(HandDay2Activity.this, AddActivity.class);
+                Intent intent = new Intent(ShowExerciseActivity.this, AddActivity.class);
                 startActivity(intent);
                 return true;
 

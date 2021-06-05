@@ -1,51 +1,20 @@
 package com.example.appgym.admin.fragment.chest;
 
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
-import android.os.Debug;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.appgym.R;
-import com.example.appgym.admin.EditActivity;
-import com.example.appgym.admin.ViewHolder_Exercise;
-import com.example.appgym.admin.activity.ChestDay1Activity;
-import com.example.appgym.admin.activity.ChestDay2Activity;
-import com.example.appgym.admin.activity.ChestDay3Activity;
-import com.example.appgym.admin.activity.ChestDay4Activity;
-import com.example.appgym.admin.activity.ChestDay5Activity;
-import com.example.appgym.admin.activity.ChestDay6Activity;
-import com.example.appgym.admin.activity.ChestDay7Activity;
-import com.example.appgym.model.Exercise;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.appgym.admin.activity.ShowExerciseActivity;
 
 
 public class ChestAdminFragment extends Fragment implements View.OnClickListener {
@@ -85,35 +54,64 @@ public class ChestAdminFragment extends Fragment implements View.OnClickListener
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(getActivity(), ShowExerciseActivity.class);
         switch (v.getId())
         {
             case R.id.btn_chestadmin_day1:
-                Intent intent = new Intent(getActivity(), ChestDay1Activity.class);
+                intent.putExtra("dataPath","Exercise/Chest/Day1");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day1");
+                intent.putExtra("dayVn","Ngày 1");
                 startActivity(intent);
                 break;
             case R.id.btn_chestadmin_day2:
-                Intent intent2 = new Intent(getActivity(), ChestDay2Activity.class);
-                startActivity(intent2);
+                intent.putExtra("dataPath","Exercise/Chest/Day2");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day2");
+                intent.putExtra("dayVn","Ngày 2");
+                startActivity(intent);
                 break;
             case R.id.btn_chestadmin_day3:
-                Intent intent3 = new Intent(getActivity(), ChestDay3Activity.class);
-                startActivity(intent3);
+                intent.putExtra("dataPath","Exercise/Chest/Day3");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day3");
+                intent.putExtra("dayVn","Ngày 3");
+                startActivity(intent);
                 break;
             case R.id.btn_chestadmin_day4:
-                Intent intent4 = new Intent(getActivity(), ChestDay4Activity.class);
-                startActivity(intent4);
+                intent.putExtra("dataPath","Exercise/Chest/Day4");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day4");
+                intent.putExtra("dayVn","Ngày 4");
+                startActivity(intent);
                 break;
             case R.id.btn_chestadmin_day5:
-                Intent intent5 = new Intent(getActivity(), ChestDay5Activity.class);
-                startActivity(intent5);
+                intent.putExtra("dataPath","Exercise/Chest/Day5");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day5");
+                intent.putExtra("dayVn","Ngày 5");
+                startActivity(intent);
                 break;
             case R.id.btn_chestadmin_day6:
-                Intent intent6 = new Intent(getActivity(), ChestDay6Activity.class);
-                startActivity(intent6);
+                intent.putExtra("dataPath","Exercise/Chest/Day6");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day6");
+                intent.putExtra("dayVn","Ngày 6");
+                startActivity(intent);
                 break;
             case R.id.btn_chestadmin_day7:
-                Intent intent7 = new Intent(getActivity(), ChestDay7Activity.class);
-                startActivity(intent7);
+                intent.putExtra("dataPath","Exercise/Chest/Day7");
+                intent.putExtra("group","Chest");
+                intent.putExtra("groupVn","Ngực");
+                intent.putExtra("day","Day7");
+                intent.putExtra("dayVn","Ngày 7");
+                startActivity(intent);
                 break;
         }
     }

@@ -1,53 +1,18 @@
 package com.example.appgym.admin.fragment.leg;
 
-import android.app.AlertDialog;
-import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import com.example.appgym.R;
-import com.example.appgym.admin.EditActivity;
-import com.example.appgym.admin.ViewHolder_Exercise;
-import com.example.appgym.admin.activity.ChestDay1Activity;
-import com.example.appgym.admin.activity.ChestDay2Activity;
-import com.example.appgym.admin.activity.ChestDay3Activity;
-import com.example.appgym.admin.activity.ChestDay4Activity;
-import com.example.appgym.admin.activity.ChestDay5Activity;
-import com.example.appgym.admin.activity.ChestDay6Activity;
-import com.example.appgym.admin.activity.ChestDay7Activity;
-import com.example.appgym.admin.activity.LegDay1Activity;
-import com.example.appgym.admin.activity.LegDay2Activity;
-import com.example.appgym.admin.activity.LegDay3Activity;
-import com.example.appgym.admin.activity.LegDay4Activity;
-import com.example.appgym.admin.activity.LegDay5Activity;
-import com.example.appgym.admin.activity.LegDay6Activity;
-import com.example.appgym.admin.activity.LegDay7Activity;
-import com.example.appgym.model.Exercise;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.appgym.admin.activity.ShowExerciseActivity;
 
 
 public class LegAdminFragment extends Fragment implements View.OnClickListener{
@@ -89,35 +54,63 @@ public class LegAdminFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
-        switch (v.getId())
-        {
+        Intent intent = new Intent(getActivity(), ShowExerciseActivity.class);
+        switch (v.getId()) {
             case R.id.btn_legadmin_day1:
-                Intent intent = new Intent(getActivity(), LegDay1Activity.class);
+                intent.putExtra("dataPath", "Exercise/Leg/Day1");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day1");
+                intent.putExtra("dayVn", "Ngày 1");
                 startActivity(intent);
                 break;
             case R.id.btn_legadmin_day2:
-                Intent intent2 = new Intent(getActivity(), LegDay2Activity.class);
-                startActivity(intent2);
+                intent.putExtra("dataPath", "Exercise/Leg/Day2");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day2");
+                intent.putExtra("dayVn", "Ngày 2");
+                startActivity(intent);
                 break;
             case R.id.btn_legadmin_day3:
-                Intent intent3 = new Intent(getActivity(), LegDay3Activity.class);
-                startActivity(intent3);
+                intent.putExtra("dataPath", "Exercise/Leg/Day3");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day3");
+                intent.putExtra("dayVn", "Ngày 3");
+                startActivity(intent);
                 break;
             case R.id.btn_legadmin_day4:
-                Intent intent4 = new Intent(getActivity(), LegDay4Activity.class);
-                startActivity(intent4);
+                intent.putExtra("dataPath", "Exercise/Leg/Day4");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day4");
+                intent.putExtra("dayVn", "Ngày 4");
+                startActivity(intent);
                 break;
             case R.id.btn_legadmin_day5:
-                Intent intent5 = new Intent(getActivity(), LegDay5Activity.class);
-                startActivity(intent5);
+                intent.putExtra("dataPath", "Exercise/Leg/Day5");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day5");
+                intent.putExtra("dayVn", "Ngày 5");
+                startActivity(intent);
                 break;
             case R.id.btn_legadmin_day6:
-                Intent intent6 = new Intent(getActivity(), LegDay6Activity.class);
-                startActivity(intent6);
+                intent.putExtra("dataPath", "Exercise/Leg/Day6");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day6");
+                intent.putExtra("dayVn", "Ngày 6");
+                startActivity(intent);
                 break;
             case R.id.btn_legadmin_day7:
-                Intent intent7 = new Intent(getActivity(), LegDay7Activity.class);
-                startActivity(intent7);
+                intent.putExtra("dataPath", "Exercise/Leg/Day7");
+                intent.putExtra("group", "Leg");
+                intent.putExtra("groupVn", "Chân");
+                intent.putExtra("day", "Day7");
+                intent.putExtra("dayVn", "Ngày 7");
+                startActivity(intent);
                 break;
         }
     }
