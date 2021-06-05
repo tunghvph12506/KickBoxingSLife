@@ -7,12 +7,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.appgym.user.fragment.advertisement.AdvertisementFragment;
 import com.example.appgym.user.fragment.home.HomeFragment;
 import com.example.appgym.user.fragment.report.ReportFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.IOException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.SocketAddress;
 
 public class MainActivity extends AppCompatActivity {
     ActionBar toolbar;
@@ -59,4 +65,5 @@ public class MainActivity extends AppCompatActivity {
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
 }

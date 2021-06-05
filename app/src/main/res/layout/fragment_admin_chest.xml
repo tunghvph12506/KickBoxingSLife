@@ -7,10 +7,11 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <Button
+        android:id="@+id/btn_chestadmin_day1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 1">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:padding="20dp"
-        android:id="@+id/rv_chest"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+    </Button>
 </LinearLayout>

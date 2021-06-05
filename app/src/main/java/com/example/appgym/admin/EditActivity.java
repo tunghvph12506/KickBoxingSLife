@@ -10,6 +10,7 @@ import android.content.ContentResolver;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.ImageDecoder;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ import com.example.appgym.R;
 import com.example.appgym.model.Exercise;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -45,30 +48,35 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
+import java.net.MalformedURLException;
+import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
 public class EditActivity extends AppCompatActivity {
     static final int PICK_VIDEO = 1;
     static final int PICK_IMAGE = 2;
+    String a;
     VideoView videoView;
     Button btnUpload;
     ProgressBar progressBar;
-    TextView tvChallenge;
+    TextView tvChallenge,tvDay;
     EditText edtName,edtCalo;
     Uri videoUri,imageUri;
     MediaController mediaController;
     FirebaseStorage firebaseStorage;
     StorageReference storageReferenceVideo,storageReferenceImage;
     DatabaseReference databaseReference;
-    Exercise exercise;
     UploadTask uploadTaskVideo,uploadTaskImage;
+    Exercise exercise;
     Button btnChoose;
     ActionBar toolbar;
     ImageView imageView;
     Bitmap bitmap;
-    String dataPath,group,groupVn,name,videoUrl,imageUrl,search,calo;
+    String dataPath,group,groupVn,day,dayVn,name,videoUrl,imageUrl,search,calo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +86,8 @@ public class EditActivity extends AppCompatActivity {
         dataPath = gets.getString("dataPath");
         group = gets.getString("group");
         groupVn = gets.getString("groupVn");
+        day = gets.getString("day");
+        dayVn = gets.getString("dayVn");
         name = gets.getString("name");
         videoUrl = gets.getString("videoUrl");
         imageUrl = gets.getString("imageUrl");
@@ -94,14 +104,14 @@ public class EditActivity extends AppCompatActivity {
         btnChoose = findViewById(R.id.btn_chooseVideo_edit);
         mediaController = new MediaController(this);
         tvChallenge = findViewById(R.id.tv_challenge_edit);
+        tvDay = findViewById(R.id.tv_day_edit);
         imageView = findViewById(R.id.imgview_edit);
         videoView = findViewById(R.id.videoview_edit);
 
         edtName.setText(name);
         edtCalo.setText(calo);
         tvChallenge.setText("Tập "+groupVn);
-        videoUri = Uri.parse(videoUrl);
-        imageUri = Uri.parse(imageUrl);
+        tvDay.setText(dayVn);
         databaseReference = FirebaseDatabase.getInstance().getReference(dataPath);
 
 
@@ -121,6 +131,9 @@ public class EditActivity extends AppCompatActivity {
                 UploadExercise();
             }
         });
+
+        exercise.setVideoUrl(videoUrl);
+        exercise.setImageUrl(imageUrl);
     }
 
     @Override
@@ -138,6 +151,7 @@ public class EditActivity extends AppCompatActivity {
                     videoView.suspend();
                     videoView.setVideoURI(videoUri);
                     videoView.start();
+                    changeVideo();
                 }
                 else
                 {
@@ -162,7 +176,7 @@ public class EditActivity extends AppCompatActivity {
                         bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), imageUri);
                     }
                     imageView.setImageBitmap(bitmap);
-
+                    changeImage();
                 }
             }catch (Exception e)
             {
@@ -202,79 +216,21 @@ public class EditActivity extends AppCompatActivity {
     {
         String videoName = edtName.getText().toString();
         String calo = edtCalo.getText().toString();
-        if(videoUri != null && imageUri != null && !TextUtils.isEmpty(videoName) && !TextUtils.isEmpty(calo))
-        {
-            StorageReference imageRef = firebaseStorage.getReferenceFromUrl(imageUrl);
-            StorageReference videoRef = firebaseStorage.getReferenceFromUrl(videoUrl);
-            imageRef.delete();
-            videoRef.delete();
+        int a = 0;
+        if(!TextUtils.isEmpty(videoName) && !TextUtils.isEmpty(calo)) {
             progressBar.setVisibility(View.VISIBLE);
-            final StorageReference referenceVideo = storageReferenceVideo.child(search +"_"+group+ "." + getExt(videoUri));
-            final StorageReference referenceImage = storageReferenceImage.child(search +"_"+group+ "." + getExt(imageUri));
-            Log.e("a",""+referenceImage);
-            Log.e("b",""+referenceVideo);
-            uploadTaskVideo = referenceVideo.putFile(videoUri);
-            uploadTaskImage = referenceImage.putFile(imageUri);
-
-            Task<Uri> uriTask = uploadTaskVideo.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                @Override
-                public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                    if(!task.isSuccessful())
-                    {
-                        throw task.getException();
-                    }
-
-                    return referenceVideo.getDownloadUrl();
-                }
-            })
-                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Uri> task) {
-                            if(task.isSuccessful())
-                            {
-                                Uri downloadUrl = task.getResult();
-                                exercise.setVideoUrl(downloadUrl.toString());
-                                Task<Uri> uriTask1 = uploadTaskImage.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                                    @Override
-                                    public Task<Uri> then(Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                        if(!task.isSuccessful())
-                                        {
-                                            throw task.getException();
-                                        }
-
-                                        return referenceImage.getDownloadUrl();
-                                    }
-                                })
-                                        .addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Uri> task) {
-                                                if(task.isSuccessful())
-                                                {
-                                                    Uri downloadUrl = task.getResult();
-                                                    exercise.setName(videoName);
-                                                    exercise.setCalo(calo);
-                                                    exercise.setSearch(search);
-                                                    exercise.setImageUrl(downloadUrl.toString());
-                                                    databaseReference.child(search).setValue(exercise);
-                                                    progressBar.setVisibility(View.INVISIBLE);
-                                                    Toast.makeText(EditActivity.this,R.string.edit_toast_updated, Toast.LENGTH_SHORT).show();
-                                                }
-                                            }
-                                        });
-
-                            }else
-                            {
-                                Toast.makeText(EditActivity.this,R.string.edit_toast_failed, Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
+            exercise.setName(videoName);
+            exercise.setCalo(calo);
+            exercise.setSearch(search);
+            exercise.setDay(day);
+            databaseReference.child(search).setValue(exercise);
+            progressBar.setVisibility(View.INVISIBLE);
+            Toast.makeText(EditActivity.this, R.string.edit_toast_updated, Toast.LENGTH_SHORT).show();
         }
-
         else
         {
-            Toast.makeText(EditActivity.this,R.string.edit_toast_require, Toast.LENGTH_SHORT).show();
+            Toast.makeText(EditActivity.this,R.string.edit_toast_require,Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -289,4 +245,67 @@ public class EditActivity extends AppCompatActivity {
         }
     }
 
+    private void changeVideo()
+    {
+        StorageReference videoRef = firebaseStorage.getReferenceFromUrl(videoUrl);
+        videoRef.delete();
+        final StorageReference referenceVideo = storageReferenceVideo.child(search + "_" + group + "_" + day);
+        uploadTaskVideo = referenceVideo.putFile(videoUri);
+        uploadTaskVideo.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                referenceVideo.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String urlvideo = uri.toString();
+                        exercise.setVideoUrl(urlvideo);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        e.getMessage();
+                        Toast.makeText(EditActivity.this, R.string.edit_toast_videourl_failed, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                e.getMessage();
+                Toast.makeText(EditActivity.this, R.string.edit_toast_uploadvideo_failed, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void changeImage()
+    {
+        StorageReference imageRef = firebaseStorage.getReferenceFromUrl(imageUrl);
+        imageRef.delete();
+        final StorageReference referenceImage = storageReferenceImage.child(search + "_" + group + "_" + day);
+        uploadTaskImage = referenceImage.putFile(imageUri);
+        uploadTaskImage.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                referenceImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String urlimage = uri.toString();
+                        exercise.setImageUrl(urlimage);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        e.getMessage();
+                        Toast.makeText(EditActivity.this, R.string.edit_toast_imageurl_failed, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                e.getMessage();
+                Toast.makeText(EditActivity.this, R.string.edit_toast_uploadimage_failed, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
 }

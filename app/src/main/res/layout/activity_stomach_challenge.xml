@@ -1,25 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".challenge.StomachChallengeActivity">
+    tools:context=".challenge.StomachChallengeActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/gray">
 
     <LinearLayout
-        android:id="@+id/linearStomach"
-        android:layout_width="0dp"
-        android:layout_height="300px"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="70dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="350dp"
+        android:layout_height="120dp"
         android:background="@drawable/border1"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:layout_marginTop="50dp">
 
         <TextView
             android:id="@+id/textView3"
@@ -32,6 +26,111 @@
             android:textColor="@color/white"
             android:textSize="34sp"
             android:gravity="center_horizontal"/>
+
     </LinearLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp">
+
+        <Button
+            android:id="@+id/btn_stomach_day1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day1"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_stomach_day2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day2"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_stomach_day3"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day3"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_stomach_day4"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day4"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_stomach_day5"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day5"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_stomach_day6"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day6"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_stomach_day7"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day7"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>

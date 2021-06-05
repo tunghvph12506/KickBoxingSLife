@@ -6,24 +6,20 @@ public class Exercise {
     private String imageUrl;
     private String search;
     private String calo;
+    private String day;
 
     public Exercise()
     {
 
     }
 
-    public Exercise(String videoUrl, String imageUrl, String search) {
-        this.videoUrl = videoUrl;
-        this.imageUrl = imageUrl;
-        this.search = search;
-    }
-
-    public Exercise(String name, String videoUrl, String imageUrl, String search, String calo) {
+    public Exercise(String name, String videoUrl, String imageUrl, String search, String calo, String day) {
         this.name = name;
         this.videoUrl = videoUrl;
         this.imageUrl = imageUrl;
         this.search = search;
         this.calo = calo;
+        this.day = day;
     }
 
     public String getName() {
@@ -64,5 +60,13 @@ public class Exercise {
 
     public void setCalo(String calo) {
         this.calo = calo;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
     }
 }

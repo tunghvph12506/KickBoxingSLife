@@ -13,6 +13,7 @@ import com.example.appgym.MainActivity;
 import com.example.appgym.R;
 import com.example.appgym.admin.AdminActivity;
 import com.example.appgym.model.Account;
+import com.example.appgym.splash.SplashActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -90,7 +91,6 @@ public class SignInActivity extends AppCompatActivity {
                 }
             });
         }
-
     }
 
     public void ForgetPassword(View view) {

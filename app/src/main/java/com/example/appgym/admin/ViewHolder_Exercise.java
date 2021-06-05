@@ -38,7 +38,7 @@ public class ViewHolder_Exercise extends RecyclerView.ViewHolder{
 
     }
 
-    public void setItem(FragmentActivity activity,String name, String videoUrl, String imageUrl, String search,String calo)
+    public void setItem(FragmentActivity activity,String name, String videoUrl, String imageUrl, String search,String calo,String day)
     {
         name_exercise = itemView.findViewById(R.id.tv_name_exercise);
         img_exercise = itemView.findViewById(R.id.img_exercise);

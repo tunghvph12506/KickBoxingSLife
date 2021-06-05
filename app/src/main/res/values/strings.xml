@@ -37,14 +37,21 @@
 
     <!-- AddActivity -->
     <string name="add_title">Thêm bài tập</string>
+    <string name="add_spinner_day1">Ngày 1</string>
+    <string name="add_spinner_day2">Ngày 2</string>
+    <string name="add_spinner_day3">Ngày 3</string>
+    <string name="add_spinner_day4">Ngày 4</string>
+    <string name="add_spinner_day5">Ngày 5</string>
+    <string name="add_spinner_day6">Ngày 6</string>
+    <string name="add_spinner_day7">Ngày 7</string>
     <string name="add_spinner_chest">Tập ngực</string>
     <string name="add_spinner_stomach">Tập bụng</string>
     <string name="add_spinner_hand">Tập tay</string>
     <string name="add_spinner_leg">Tập chân</string>
-    <string name="add_toast_existed">Bài tập đã tồn tại</string>
+    <string name="add_toast_existed">Bài tập đã tồn tại!</string>
     <string name="add_toast_added">Bài tập đã được thêm</string>
-    <string name="add_toast_failed">Thêm bài tập thất bại</string>
-    <string name="add_toast_require">Không được bỏ trống</string>
+    <string name="add_toast_failed">Thêm bài tập thất bại!</string>
+    <string name="add_toast_require">Không được bỏ trống!</string>
     <string name="add_edt_hintname">Tên video</string>
     <string name="add_edt_hintcalo">Calo</string>
     <string name="add_btn_upload">Thêm bài tập</string>
@@ -54,8 +61,12 @@
 
     <!-- EditActivity -->
     <string name="edit_toast_updated">Bài tập đã được cập nhật</string>
-    <string name="edit_toast_failed">Cập nhật bài tập thất bại</string>
-    <string name="edit_toast_require">Không được bỏ trống</string>
+    <string name="edit_toast_failed">Cập nhật bài tập thất bại!</string>
+    <string name="edit_toast_require">Không được bỏ trống!</string>
+    <string name="edit_toast_videourl_failed">get video download url failed!</string>
+    <string name="edit_toast_imageurl_failed">get image download url failed!</string>
+    <string name="edit_toast_uploadvideo_failed">upload video task failed!</string>
+    <string name="edit_toast_uploadimage_failed">upload image task failed!</string>
     <string name="edit_edt_hintname">Tên video</string>
     <string name="edit_edt_hintcalo">Calo</string>
     <string name="edit_btn_upload">Cập nhật</string>
@@ -129,4 +140,15 @@
     <string name="change_password_password_check">Nhập lại mật khẩu</string>
 
     <!-- ChangePasswordActivity -->
+
+    <!-- Day -->
+    <string name="btn_day1">Ngày 1</string>
+    <string name="btn_day2">Ngày 2</string>
+    <string name="btn_day3">Ngày 3</string>
+    <string name="btn_day4">Ngày 4</string>
+    <string name="btn_day5">Ngày 5</string>
+    <string name="btn_day6">Ngày 6</string>
+    <string name="btn_day7">Ngày 7</string>
+
+    <!-- Day -->
 </resources>

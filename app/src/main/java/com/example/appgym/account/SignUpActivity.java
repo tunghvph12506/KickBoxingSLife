@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
+import com.example.appgym.MainActivity;
 import com.example.appgym.R;
 import com.example.appgym.model.Account;
 import com.google.android.gms.tasks.OnFailureListener;

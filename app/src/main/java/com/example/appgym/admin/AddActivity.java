@@ -33,6 +33,8 @@ import com.example.appgym.R;
 import com.example.appgym.model.Exercise;
 import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -61,11 +63,11 @@ public class AddActivity extends AppCompatActivity {
     UploadTask uploadTaskVideo,uploadTaskImage;
     Button btnChoose;
     ActionBar toolbar;
-    Spinner spinnerChallenge;
+    Spinner spinnerChallenge,spinnerDay;
     ImageView imageView;
-    List<String> list;
+    List<String> listgroup,listday;
     Bitmap bitmap;
-    String group;
+    String group,day;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,8 +83,10 @@ public class AddActivity extends AppCompatActivity {
         btnChoose = findViewById(R.id.btn_chooseVideo_add);
         mediaController = new MediaController(this);
         spinnerChallenge = findViewById(R.id.spinner_challenge_add);
+        spinnerDay = findViewById(R.id.spinner_day_add);
         imageView = findViewById(R.id.imgview_add);
         group = "Chest";
+        day = "Day1";
         videoView = findViewById(R.id.videoview_add);
         videoView.start();
 
@@ -90,13 +94,24 @@ public class AddActivity extends AppCompatActivity {
         toolbar.setTitle(R.string.add_title);
         toolbar.setDisplayHomeAsUpEnabled(true);
 
-        list = new ArrayList<>();
-        list.add(getResources().getString(R.string.add_spinner_chest));
-        list.add(getResources().getString(R.string.add_spinner_stomach));
-        list.add(getResources().getString(R.string.add_spinner_hand));
-        list.add(getResources().getString(R.string.add_spinner_leg));
-        ArrayAdapter spinnerAdapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,list);
-        spinnerChallenge.setAdapter(spinnerAdapter);
+        listgroup = new ArrayList<>();
+        listgroup.add(getResources().getString(R.string.add_spinner_chest));
+        listgroup.add(getResources().getString(R.string.add_spinner_stomach));
+        listgroup.add(getResources().getString(R.string.add_spinner_hand));
+        listgroup.add(getResources().getString(R.string.add_spinner_leg));
+
+        listday = new ArrayList<>();
+        listday.add(getResources().getString(R.string.add_spinner_day1));
+        listday.add(getResources().getString(R.string.add_spinner_day2));
+        listday.add(getResources().getString(R.string.add_spinner_day3));
+        listday.add(getResources().getString(R.string.add_spinner_day4));
+        listday.add(getResources().getString(R.string.add_spinner_day5));
+        listday.add(getResources().getString(R.string.add_spinner_day6));
+        listday.add(getResources().getString(R.string.add_spinner_day7));
+        ArrayAdapter spinnerChallengeAdapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,listgroup);
+        ArrayAdapter spinnerDayAdapter = new ArrayAdapter(this,R.layout.support_simple_spinner_dropdown_item,listday);
+        spinnerChallenge.setAdapter(spinnerChallengeAdapter);
+        spinnerDay.setAdapter(spinnerDayAdapter);
 
         spinnerChallenge.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -119,6 +134,34 @@ public class AddActivity extends AppCompatActivity {
 
             }
 
+        });
+
+        spinnerDay.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                switch (spinnerDay.getSelectedItemPosition())
+                {
+                    case 0: day = "Day1";
+                        break;
+                    case 1: day = "Day2";
+                        break;
+                    case 2: day = "Day3";
+                        break;
+                    case 3: day = "Day4";
+                        break;
+                    case 4: day = "Day5";
+                        break;
+                    case 5: day = "Day6";
+                        break;
+                    case 6: day = "Day7";
+                        break;
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
         });
 
         btnUpload.setOnClickListener(new View.OnClickListener() {
@@ -215,71 +258,73 @@ public class AddActivity extends AppCompatActivity {
             databaseReferenceCheck.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot snapshot) {
-                    if(snapshot.exists())
-                    {
-                        Toast.makeText(AddActivity.this,R.string.add_toast_existed, Toast.LENGTH_SHORT).show();
-                    }
-                    else
-                    {
+                    if (snapshot.exists()) {
+                        Toast.makeText(AddActivity.this, R.string.add_toast_existed, Toast.LENGTH_SHORT).show();
+                    } else {
                         progressBar.setVisibility(View.VISIBLE);
-                        final StorageReference referenceVideo = storageReferenceVideo.child(search +"_"+group+ "." + getExt(videoUri));
-                        final StorageReference referenceImage = storageReferenceImage.child(search +"_"+group+ "." + getExt(imageUri));
+                        final StorageReference referenceVideo = storageReferenceVideo.child(search + "_" + group + "_" + day);
+                        final StorageReference referenceImage = storageReferenceImage.child(search + "_" + group + "_" + day);
                         uploadTaskVideo = referenceVideo.putFile(videoUri);
                         uploadTaskImage = referenceImage.putFile(imageUri);
 
-                        Task<Uri> uriTask = uploadTaskVideo.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
+                        uploadTaskVideo.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                             @Override
-                            public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                if(!task.isSuccessful())
-                                {
-                                    throw task.getException();
-                                }
-
-                                return referenceVideo.getDownloadUrl();
-                            }
-                        })
-                                .addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                referenceVideo.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                     @Override
-                                    public void onComplete(@NonNull Task<Uri> task) {
-                                        if(task.isSuccessful())
-                                        {
-                                            Uri downloadUrl = task.getResult();
-                                            exercise.setVideoUrl(downloadUrl.toString());
-                                            Task<Uri> uriTask1 = uploadTaskImage.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
-                                                @Override
-                                                public Task<Uri> then(Task<UploadTask.TaskSnapshot> task) throws Exception {
-                                                    if(!task.isSuccessful())
-                                                    {
-                                                        throw task.getException();
+                                    public void onSuccess(Uri uri) {
+                                        String urlvideo = uri.toString();
+                                        exercise.setVideoUrl(urlvideo);
+                                        uploadTaskImage.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                            @Override
+                                            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                                referenceImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                                    @Override
+                                                    public void onSuccess(Uri uri) {
+                                                        String urlimage = uri.toString();
+                                                        exercise.setImageUrl(urlimage);
+                                                        exercise.setName(videoName);
+                                                        exercise.setCalo(calo);
+                                                        exercise.setSearch(search);
+                                                        exercise.setDay(day);
+                                                        databaseReference.child(search).setValue(exercise);
+                                                        progressBar.setVisibility(View.INVISIBLE);
+                                                        Toast.makeText(AddActivity.this, R.string.add_toast_added, Toast.LENGTH_SHORT).show();
                                                     }
-
-                                                    return referenceImage.getDownloadUrl();
-                                                }
-                                            })
-                                                    .addOnCompleteListener(new OnCompleteListener<Uri>() {
-                                                        @Override
-                                                        public void onComplete(@NonNull Task<Uri> task) {
-                                                            if(task.isSuccessful())
-                                                            {
-                                                                Uri downloadUrl = task.getResult();
-                                                                exercise.setName(videoName);
-                                                                exercise.setCalo(calo);
-                                                                exercise.setSearch(search);
-                                                                exercise.setImageUrl(downloadUrl.toString());
-                                                                databaseReference.child(search).setValue(exercise);
-                                                                progressBar.setVisibility(View.INVISIBLE);
-                                                                Toast.makeText(AddActivity.this,R.string.add_toast_added, Toast.LENGTH_SHORT).show();
-                                                            }
-                                                        }
-                                                    });
-
-                                        }else
-                                        {
-                                            Toast.makeText(AddActivity.this,R.string.add_toast_failed, Toast.LENGTH_SHORT).show();
-                                        }
+                                                }).addOnFailureListener(new OnFailureListener() {
+                                                    @Override
+                                                    public void onFailure(Exception e) {
+                                                        e.getMessage();
+                                                        Toast.makeText(AddActivity.this, "get image download url failed", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            }
+                                        }).addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(Exception e) {
+                                                e.getMessage();
+                                                Toast.makeText(AddActivity.this, "upload image task failed", Toast.LENGTH_SHORT).show();
+                                            }
+                                        });
+                                    }
+                                }).addOnFailureListener(new OnFailureListener() {
+                                    @Override
+                                    public void onFailure(Exception e) {
+                                        e.getMessage();
+                                        Toast.makeText(AddActivity.this, "get video download url failed", Toast.LENGTH_SHORT).show();
                                     }
                                 });
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(Exception e) {
+                                e.getMessage();
+                                Toast.makeText(AddActivity.this, "upload video task failed", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+
                     }
+
                 }
 
                 @Override
@@ -287,13 +332,10 @@ public class AddActivity extends AppCompatActivity {
 
                 }
             });
-
         }
-        else
-        {
-            Toast.makeText(AddActivity.this,R.string.add_toast_require, Toast.LENGTH_SHORT).show();
+        else{
+            Toast.makeText(AddActivity.this,R.string.add_toast_require,Toast.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -311,7 +353,7 @@ public class AddActivity extends AppCompatActivity {
     private void ChangePathFireBase()
     {
         String name = edtName.getText().toString().toLowerCase();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Exercise/"+group);
-        databaseReferenceCheck = FirebaseDatabase.getInstance().getReference("Exercise/"+group+"/"+name);
+        databaseReference = FirebaseDatabase.getInstance().getReference("Exercise/"+group+"/"+day);
+        databaseReferenceCheck = FirebaseDatabase.getInstance().getReference("Exercise/"+group+"/"+day+"/"+name);
     }
 }
