@@ -38,15 +38,15 @@ import com.google.firebase.storage.StorageReference;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LegDay1Activity extends AppCompatActivity {
+public class ChestDay5Activity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
     ActionBar toolbar;
-    String dataPath = "Exercise/Leg/Day1";
-    String group = "Leg";
+    String dataPath = "Exercise/Chest/Day1";
+    String group = "Chest";
     String day = "Day1";
-    String groupVn = "Chân";
+    String groupVn = "Ngực";
     String dayVn = "Ngày 1";
     List<Exercise> listExer;
     FirebaseStorage firebaseStorage;
@@ -54,9 +54,9 @@ public class LegDay1Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_leg_day1);
+        setContentView(R.layout.activity_chest_day1);
 
-        recyclerView = findViewById(R.id.rv_leg_day1);
+        recyclerView = findViewById(R.id.rv_chest_day1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
@@ -78,7 +78,7 @@ public class LegDay1Activity extends AppCompatActivity {
 
             @Override
             protected void onBindViewHolder(@NonNull ViewHolder_Exercise holder, int position, @NonNull Exercise model) {
-                holder.setItem(LegDay1Activity.this,model.getName(),model.getVideoUrl(),model.getImageUrl(),model.getSearch(),model.getCalo(),model.getDay());
+                holder.setItem(ChestDay5Activity.this,model.getName(),model.getVideoUrl(),model.getImageUrl(),model.getSearch(),model.getCalo(),model.getDay());
             }
 
             @NonNull
@@ -90,7 +90,7 @@ public class LegDay1Activity extends AppCompatActivity {
                 viewHolder_exercise.setOnClickListener(new ViewHolder_Exercise.ClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
-                        Intent intent = new Intent(LegDay1Activity.this, EditActivity.class);
+                        Intent intent = new Intent(ChestDay5Activity.this, EditActivity.class);
                         intent.putExtra("dataPath",dataPath);
                         intent.putExtra("group",group);
                         intent.putExtra("groupVn",groupVn);
@@ -106,7 +106,7 @@ public class LegDay1Activity extends AppCompatActivity {
 
                     @Override
                     public void onItemLongClick(View view, int position) {
-                        showAlertDialog(LegDay1Activity.this, position);
+                        showAlertDialog(ChestDay5Activity.this, position);
                     }
                 });
 
@@ -203,7 +203,7 @@ public class LegDay1Activity extends AppCompatActivity {
                 return true;
 
             case R.id.add_icon:
-                Intent intent = new Intent(LegDay1Activity.this, AddActivity.class);
+                Intent intent = new Intent(ChestDay5Activity.this, AddActivity.class);
                 startActivity(intent);
                 return true;
 

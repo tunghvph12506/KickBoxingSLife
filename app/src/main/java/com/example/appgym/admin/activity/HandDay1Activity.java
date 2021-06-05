@@ -2,6 +2,7 @@ package com.example.appgym.admin.activity;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -12,11 +13,15 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.example.appgym.R;
+import com.example.appgym.admin.AddActivity;
 import com.example.appgym.admin.EditActivity;
 import com.example.appgym.admin.ViewHolder_Exercise;
 import com.example.appgym.model.Exercise;
@@ -37,6 +42,7 @@ public class HandDay1Activity extends AppCompatActivity {
     FirebaseDatabase database = FirebaseDatabase.getInstance();
     DatabaseReference databaseReference;
     RecyclerView recyclerView;
+    ActionBar toolbar;
     String dataPath = "Exercise/Hand/Day1";
     String group = "Hand";
     String day = "Day1";
@@ -53,6 +59,10 @@ public class HandDay1Activity extends AppCompatActivity {
         recyclerView = findViewById(R.id.rv_hand_day1);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.btn_day1);
+        toolbar.setDisplayHomeAsUpEnabled(true);
 
         databaseReference = database.getReference().child(dataPath);
         getAllList();
@@ -174,5 +184,29 @@ public class HandDay1Activity extends AppCompatActivity {
     public void onResume() {
         getAllList();
         super.onResume();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.add_video_admin, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            case R.id.add_icon:
+                Intent intent = new Intent(HandDay1Activity.this, AddActivity.class);
+                startActivity(intent);
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 }

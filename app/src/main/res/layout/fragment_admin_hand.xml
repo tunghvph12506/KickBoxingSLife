@@ -7,4 +7,65 @@
     android:orientation="vertical"
     android:gravity="center">
 
+    <Button
+        android:id="@+id/btn_handadmin_day1"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 1">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_handadmin_day2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 2"
+        android:layout_marginTop="20dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_handadmin_day3"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 3"
+        android:layout_marginTop="20dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_handadmin_day4"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 4"
+        android:layout_marginTop="20dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_handadmin_day5"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 5"
+        android:layout_marginTop="20dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_handadmin_day6"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 6"
+        android:layout_marginTop="20dp">
+
+    </Button>
+    <Button
+        android:id="@+id/btn_handadmin_day7"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Ngày 7"
+        android:layout_marginTop="20dp">
+
+    </Button>
+
 </LinearLayout>

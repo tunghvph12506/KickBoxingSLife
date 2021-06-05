@@ -15,11 +15,26 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.appgym.R;
 import com.example.appgym.admin.EditActivity;
 import com.example.appgym.admin.ViewHolder_Exercise;
+import com.example.appgym.admin.activity.ChestDay1Activity;
+import com.example.appgym.admin.activity.ChestDay2Activity;
+import com.example.appgym.admin.activity.ChestDay3Activity;
+import com.example.appgym.admin.activity.ChestDay4Activity;
+import com.example.appgym.admin.activity.ChestDay5Activity;
+import com.example.appgym.admin.activity.ChestDay6Activity;
+import com.example.appgym.admin.activity.ChestDay7Activity;
+import com.example.appgym.admin.activity.StomachDay1Activity;
+import com.example.appgym.admin.activity.StomachDay2Activity;
+import com.example.appgym.admin.activity.StomachDay3Activity;
+import com.example.appgym.admin.activity.StomachDay4Activity;
+import com.example.appgym.admin.activity.StomachDay5Activity;
+import com.example.appgym.admin.activity.StomachDay6Activity;
+import com.example.appgym.admin.activity.StomachDay7Activity;
 import com.example.appgym.model.Exercise;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.firebase.ui.database.FirebaseRecyclerOptions;
@@ -35,7 +50,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class StomachAdminFragment extends Fragment {
+public class StomachAdminFragment extends Fragment implements View.OnClickListener {
+    Button btn_day1,btn_day2,btn_day3,btn_day4,btn_day5,btn_day6,btn_day7;
 
     public StomachAdminFragment() {
         // Required empty public constructor
@@ -45,6 +61,22 @@ public class StomachAdminFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_admin_stomach, container, false);
+        btn_day1 = view.findViewById(R.id.btn_stomachadmin_day1);
+        btn_day2 = view.findViewById(R.id.btn_stomachadmin_day2);
+        btn_day3 = view.findViewById(R.id.btn_stomachadmin_day3);
+        btn_day4 = view.findViewById(R.id.btn_stomachadmin_day4);
+        btn_day5 = view.findViewById(R.id.btn_stomachadmin_day5);
+        btn_day6 = view.findViewById(R.id.btn_stomachadmin_day6);
+        btn_day7 = view.findViewById(R.id.btn_stomachadmin_day7);
+
+        btn_day1.setOnClickListener(this);
+        btn_day2.setOnClickListener(this);
+        btn_day3.setOnClickListener(this);
+        btn_day4.setOnClickListener(this);
+        btn_day5.setOnClickListener(this);
+        btn_day6.setOnClickListener(this);
+        btn_day7.setOnClickListener(this);
+
         return view;
     }
 
@@ -54,4 +86,39 @@ public class StomachAdminFragment extends Fragment {
 
     }
 
+    @Override
+    public void onClick(View v) {
+        switch (v.getId())
+        {
+            case R.id.btn_stomachadmin_day1:
+                Intent intent = new Intent(getActivity(), StomachDay1Activity.class);
+                startActivity(intent);
+                break;
+            case R.id.btn_stomachadmin_day2:
+                Intent intent2 = new Intent(getActivity(), StomachDay2Activity.class);
+                startActivity(intent2);
+                break;
+            case R.id.btn_stomachadmin_day3:
+                Intent intent3 = new Intent(getActivity(), StomachDay3Activity.class);
+                startActivity(intent3);
+                break;
+            case R.id.btn_stomachadmin_day4:
+                Intent intent4 = new Intent(getActivity(), StomachDay4Activity.class);
+                startActivity(intent4);
+                break;
+            case R.id.btn_stomachadmin_day5:
+                Intent intent5 = new Intent(getActivity(), StomachDay5Activity.class);
+                startActivity(intent5);
+                break;
+            case R.id.btn_stomachadmin_day6:
+                Intent intent6 = new Intent(getActivity(), StomachDay6Activity.class);
+                startActivity(intent6);
+                break;
+            case R.id.btn_stomachadmin_day7:
+                Intent intent7 = new Intent(getActivity(), StomachDay7Activity.class);
+                startActivity(intent7);
+                break;
+        }
+
+    }
 }
