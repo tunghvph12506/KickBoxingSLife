@@ -1,9 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".challenge.LegChallengeActivity">
+    tools:context=".challenge.LegChallengeActivity"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@color/gray">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:layout_width="350dp"
+        android:layout_height="120dp"
+        android:background="@drawable/border2"
+        android:layout_marginTop="50dp">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:paddingTop="40px"
+            android:textStyle="bold"
+            android:text="@string/home_tv_chestchallenge"
+            android:textColor="@color/white"
+            android:textSize="34sp"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:layout_marginLeft="35dp"
+        android:layout_marginRight="35dp">
+
+        <Button
+            android:id="@+id/btn_leg_day1"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day1"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_leg_day2"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day2"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_leg_day3"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day3"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_leg_day4"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day4"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_leg_day5"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day5"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_leg_day6"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day6"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+        <Button
+            android:id="@+id/btn_leg_day7"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/btn_border1"
+            android:text="@string/btn_day7"
+            android:textStyle="bold"
+            android:textSize="25dp"
+            android:textColor="@color/OrangeRed"
+            app:backgroundTint="@null">
+
+        </Button>
+
+
+    </LinearLayout>
+
+</LinearLayout>
