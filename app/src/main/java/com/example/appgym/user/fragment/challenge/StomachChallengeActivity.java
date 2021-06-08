@@ -38,6 +38,8 @@ public class StomachChallengeActivity extends AppCompatActivity implements View.
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(StomachChallengeActivity.this, ShowExerciseUserActivity.class);
+        intent.putExtra("BGLayout",R.drawable.border1);
+        intent.putExtra("TextLayout","Tập Bụng");
         switch (v.getId())
         {
             case R.id.btn_stomach_day1:

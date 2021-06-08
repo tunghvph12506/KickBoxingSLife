@@ -36,6 +36,8 @@ public class HandChallengeActivity extends AppCompatActivity implements View.OnC
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(HandChallengeActivity.this, ShowExerciseUserActivity.class);
+        intent.putExtra("BGLayout",R.drawable.border3);
+        intent.putExtra("TextLayout","Tập Tay");
         switch (v.getId())
         {
             case R.id.btn_hand_day1:

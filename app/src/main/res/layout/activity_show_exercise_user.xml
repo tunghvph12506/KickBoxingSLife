@@ -10,13 +10,14 @@
     android:background="@color/gray">
 
     <LinearLayout
+        android:id="@+id/linearLayout_Practice"
         android:layout_width="350dp"
         android:layout_height="120dp"
         android:background="@drawable/border1"
         android:layout_marginTop="50dp">
 
         <TextView
-            android:id="@+id/textView3"
+            android:id="@+id/tv_BG"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:textAlignment="center"

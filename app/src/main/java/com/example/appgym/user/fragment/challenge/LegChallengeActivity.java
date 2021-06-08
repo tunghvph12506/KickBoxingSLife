@@ -36,6 +36,8 @@ public class LegChallengeActivity extends AppCompatActivity implements View.OnCl
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(LegChallengeActivity.this, ShowExerciseUserActivity.class);
+        intent.putExtra("BGLayout",R.drawable.border4);
+        intent.putExtra("TextLayout","Tập Chân");
         switch (v.getId())
         {
             case R.id.btn_leg_day1:

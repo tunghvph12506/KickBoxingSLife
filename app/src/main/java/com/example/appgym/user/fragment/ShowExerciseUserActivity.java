@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -11,6 +12,8 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +22,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +55,11 @@ public class ShowExerciseUserActivity extends AppCompatActivity {
     List<Exercise> listExer;
     FirebaseStorage firebaseStorage;
     int checkchild = 0;
-
+    LinearLayout linearLayout;
+    TextView tv_BG;
+    String textBG;
+    int layoutBG;
+    Drawable drawable;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,10 +71,18 @@ public class ShowExerciseUserActivity extends AppCompatActivity {
         groupVn = gets.getString("groupVn");
         day = gets.getString("day");
         dayVn = gets.getString("dayVn");
+        layoutBG = gets.getInt("BGLayout");
+        textBG = gets.getString("TextLayout");
 
         recyclerView = findViewById(R.id.rv_exercise_user);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
+        linearLayout = findViewById(R.id.linearLayout_Practice);
+        drawable = ResourcesCompat.getDrawable(getResources(),layoutBG,null);
+        linearLayout.setBackground(drawable);
+        tv_BG = findViewById(R.id.tv_BG);
+        tv_BG.setText(textBG);
 
         toolbar = getSupportActionBar();
         toolbar.setTitle(groupVn+" - "+dayVn);
