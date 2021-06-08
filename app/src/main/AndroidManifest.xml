@@ -25,18 +25,20 @@
         <activity android:name=".user.fragment.challenge.HandChallengeActivity" />
         <activity android:name=".user.fragment.challenge.ChestChallengeActivity" />
         <activity android:name=".admin.AdminActivity">
+
+        </activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
-
-        </activity>
         <activity
             android:name=".splash.SplashActivity"
-            android:theme="@style/Theme.AppGYM.NoActionBar" />
+            android:theme="@style/Theme.AppGYM.NoActionBar" >
+
+        </activity>
     </application>
 
 </manifest>
