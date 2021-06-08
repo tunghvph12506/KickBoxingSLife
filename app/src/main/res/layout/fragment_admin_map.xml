@@ -1,14 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.fragment.map.MapAdminFragment">
+    tools:context=".admin.fragment.map.MapAdminFragment"
+    android:orientation="vertical"
+    android:gravity="center">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+    <ImageView
+        android:id="@+id/imgview_mapadd"
+        android:layout_marginTop="20dp"
+        android:layout_width="192dp"
+        android:layout_height="108dp">
 
-</FrameLayout>
+    </ImageView>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_roomname_mapadd"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:hint="@string/mapadd_edt_hintroomname">
+
+    </EditText>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_bossname_mapadd"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:hint="@string/mapadd_edt_hintbossname">
+
+    </EditText>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_sdt_mapadd"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:hint="@string/mapadd_edt_hintsdt">
+
+    </EditText>
+
+    <EditText
+        android:layout_marginTop="20dp"
+        android:id="@+id/edt_address_mapadd"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
+        android:hint="@string/mapadd_edt_hintaddress">
+
+    </EditText>
+
+    <Button
+        android:layout_marginTop="20dp"
+        android:id="@+id/btn_upload_mapadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/mapadd_btn_add"
+        android:textSize="15dp">
+
+    </Button>
+
+    <Button
+        android:id="@+id/btn_chooseImage_mapadd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/add_btn_chooseimage"
+        android:textStyle="bold"
+        android:textSize="15dp">
+
+    </Button>
+</LinearLayout>

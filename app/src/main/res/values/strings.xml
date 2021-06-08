@@ -59,6 +59,18 @@
     <string name="add_btn_chooseimage">Chọn ảnh</string>
     <!-- AddActivity -->
 
+    <!-- MapAddActivity -->
+    <string name="mapadd_edt_hintroomname">Tên phòng tập</string>
+    <string name="mapadd_edt_hintbossname">Tên ông chủ</string>
+    <string name="mapadd_edt_hintsdt">Số điện thoại</string>
+    <string name="mapadd_edt_hintaddress">Địa chỉ</string>
+    <string name="mapadd_btn_add">Sửa thông tin</string>
+    <string name="mapadd_toast_added">Sửa thông tin thành công</string>
+    <string name="mapadd_toast_imageurl_failed">Get image download url failed!</string>
+    <string name="mapadd_toast_uploadimage_failed">Upload image task failed!</string>
+
+    <!-- MapAddActivity -->
+
     <!-- EditActivity -->
     <string name="edit_toast_updated">Bài tập đã được cập nhật</string>
     <string name="edit_toast_failed">Cập nhật bài tập thất bại!</string>
