@@ -9,10 +9,14 @@
         android:roundIcon="@mipmap/kickboxing_logo_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppGYM">
+        <activity android:name=".user.fragment.StartPracticeActivity"></activity>
+        <activity android:name=".user.fragment.ShowExerciseUserActivity" />
         <activity android:name=".admin.activity.ShowExerciseActivity" />
         <activity android:name=".account.ChangePasswordActivity" />
         <activity android:name=".account.ForgetPasswordActivity" />
-        <activity android:name=".account.SignInActivity" />
+        <activity android:name=".account.SignInActivity" >
+
+        </activity>
         <activity android:name=".account.SignUpActivity" />
         <activity android:name=".admin.EditActivity" />
         <activity android:name=".admin.AddActivity" />
@@ -20,14 +24,14 @@
         <activity android:name=".user.fragment.challenge.StomachChallengeActivity" />
         <activity android:name=".user.fragment.challenge.HandChallengeActivity" />
         <activity android:name=".user.fragment.challenge.ChestChallengeActivity" />
-        <activity android:name=".admin.AdminActivity">
+        <activity android:name=".admin.AdminActivity"></activity>
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity" />
         <activity
             android:name=".splash.SplashActivity"
             android:theme="@style/Theme.AppGYM.NoActionBar" />

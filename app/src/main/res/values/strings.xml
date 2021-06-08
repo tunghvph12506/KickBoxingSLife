@@ -141,6 +141,18 @@
 
     <!-- ChangePasswordActivity -->
 
+    <!-- ShowExerciseUserActivity -->
+    <string name="show_exercise_toast_noexercise">Không có bài tập</string>
+    
+    <!-- ShowExerciseUserActivity -->
+
+    <!-- StartPracticeActivity -->
+    <string name="start_practice_string_instruction1">Cố gắng lên</string>
+    <string name="start_practice_string_instruction2">Chuẩn bị</string>
+    <string name="start_practice_toast_congratulations">Chúc mừng bạn đã hoàn thành bài tập!!!</string>
+
+    <!-- StartPracticeActivity -->
+
     <!-- Day -->
     <string name="btn_day1">Ngày 1</string>
     <string name="btn_day2">Ngày 2</string>

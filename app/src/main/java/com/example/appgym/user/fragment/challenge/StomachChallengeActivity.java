@@ -2,11 +2,14 @@ package com.example.appgym.user.fragment.challenge;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
 import com.example.appgym.R;
+import com.example.appgym.admin.activity.ShowExerciseActivity;
+import com.example.appgym.user.fragment.ShowExerciseUserActivity;
 
 public class StomachChallengeActivity extends AppCompatActivity implements View.OnClickListener{
     Button btn_day1,btn_day2,btn_day3,btn_day4,btn_day5,btn_day6,btn_day7;
@@ -34,9 +37,65 @@ public class StomachChallengeActivity extends AppCompatActivity implements View.
 
     @Override
     public void onClick(View v) {
+        Intent intent = new Intent(StomachChallengeActivity.this, ShowExerciseUserActivity.class);
         switch (v.getId())
         {
             case R.id.btn_stomach_day1:
+                intent.putExtra("dataPath","Exercise/Stomach/Day1");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day1");
+                intent.putExtra("dayVn","Ngày 1");
+                startActivity(intent);
+                break;
+            case R.id.btn_stomach_day2:
+                intent.putExtra("dataPath","Exercise/Stomach/Day2");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day2");
+                intent.putExtra("dayVn","Ngày 2");
+                startActivity(intent);
+                break;
+            case R.id.btn_stomach_day3:
+                intent.putExtra("dataPath","Exercise/Stomach/Day3");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day3");
+                intent.putExtra("dayVn","Ngày 3");
+                startActivity(intent);
+                break;
+            case R.id.btn_stomach_day4:
+                intent.putExtra("dataPath","Exercise/Stomach/Day4");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day4");
+                intent.putExtra("dayVn","Ngày 4");
+                startActivity(intent);
+                break;
+            case R.id.btn_stomach_day5:
+                intent.putExtra("dataPath","Exercise/Stomach/Day5");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day5");
+                intent.putExtra("dayVn","Ngày 5");
+                startActivity(intent);
+                break;
+            case R.id.btn_stomach_day6:
+                intent.putExtra("dataPath","Exercise/Stomach/Day6");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day6");
+                intent.putExtra("dayVn","Ngày 6");
+                startActivity(intent);
+                break;
+            case R.id.btn_stomach_day7:
+                intent.putExtra("dataPath","Exercise/Stomach/Day7");
+                intent.putExtra("group","Stomach");
+                intent.putExtra("groupVn","Bụng");
+                intent.putExtra("day","Day7");
+                intent.putExtra("dayVn","Ngày 7");
+                startActivity(intent);
+                break;
         }
     }
 }
