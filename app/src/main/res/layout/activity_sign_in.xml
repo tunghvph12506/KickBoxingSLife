@@ -101,15 +101,14 @@
         android:layout_marginEnd="50dp"
         android:layout_marginRight="50dp"
         android:background="@drawable/edittext_background"
-        app:backgroundTint="@color/red"
         android:onClick="Sign_in"
         android:text="@string/sign_in_button_signin"
+        app:backgroundTint="@color/red"
 
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageView4"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
 
 
     <ImageView
@@ -127,16 +126,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="200dp"
+        android:onClick="clickSignUp"
         android:text="@string/sign_in_ed_sign_out"
         android:textAlignment="center"
         android:textColor="#FF0000"
         android:textSize="20sp"
-        android:onClick="clickSignUp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+        app:layout_constraintTop_toBottomOf="@+id/btnSignin" />
 
     <ImageView
         android:id="@+id/imageView2"
