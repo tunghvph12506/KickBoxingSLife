@@ -48,9 +48,16 @@ public class SettingFragment extends Fragment {
         databaseReferenceCustomerImage.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Information information = snapshot.getValue(Information.class);
-                String imageUrl = information.getImageUrl();
-                Picasso.get().load(imageUrl).into(imageView);
+                if(snapshot.exists())
+                {
+                    Information information = snapshot.getValue(Information.class);
+                    if(information.getImageUrl() != null)
+                    {
+                        String imageUrl = information.getImageUrl();
+                        Picasso.get().load(imageUrl).into(imageView);
+                    }
+                }
+
             }
 
             @Override

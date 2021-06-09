@@ -95,25 +95,28 @@ public class SettingAccountActivity extends AppCompatActivity {
         nowRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                Information information = snapshot.getValue(Information.class);
-                edName.getEditText().setText(information.getName());
-                edAge.getEditText().setText(information.getAge());
-                edPhone.getEditText().setText(information.getPhone());
-                edWeight.getEditText().setText(information.getWeight());
-                edHeight.getEditText().setText(information.getHeight());
-                edAddress.getEditText().setText(information.getAddress());
-                imageUrl = information.getImageUrl();
-                if(imageUrl != null)
+                if(snapshot.exists())
                 {
-                    Picasso.get().load(imageUrl).into(imageView);
-                }
-                if(information.getGender().equals("Nam"))
-                {
-                    radioButton1.setChecked(true);
-                }
-                else
-                {
-                    radioButton2.setChecked(true);
+                    Information information = snapshot.getValue(Information.class);
+                    edName.getEditText().setText(information.getName());
+                    edAge.getEditText().setText(information.getAge());
+                    edPhone.getEditText().setText(information.getPhone());
+                    edWeight.getEditText().setText(information.getWeight());
+                    edHeight.getEditText().setText(information.getHeight());
+                    edAddress.getEditText().setText(information.getAddress());
+                    imageUrl = information.getImageUrl();
+                    if(imageUrl != null)
+                    {
+                        Picasso.get().load(imageUrl).into(imageView);
+                    }
+                    if(information.getGender().equals("Nam"))
+                    {
+                        radioButton1.setChecked(true);
+                    }
+                    else
+                    {
+                        radioButton2.setChecked(true);
+                    }
                 }
             }
 
