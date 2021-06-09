@@ -1,10 +1,12 @@
 package com.example.appgym.account;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,14 +26,19 @@ import java.util.List;
 public class ChangePasswordActivity extends AppCompatActivity {
     TextInputLayout password, passwordcheck;
     String tentk1="";
-    FirebaseDatabase database = FirebaseDatabase.getInstance();
+    DatabaseReference mRef = FirebaseDatabase.getInstance().getReference("Account");
     TextView tv_tk;
-    String keyy="";
     List<Account> list = new ArrayList<>();
+    ActionBar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.change_password_title);
+        toolbar.setDisplayHomeAsUpEnabled(true);
+
         password=findViewById(R.id.ed_change_password);
         passwordcheck=findViewById(R.id.ed_change_password_check);
         Intent i=getIntent();
@@ -55,27 +62,30 @@ public class ChangePasswordActivity extends AppCompatActivity {
         else if(!password12.equals(passlai12)){
             passwordcheck.setError(getResources().getString(R.string.change_password_error_notcorrectpassword));
         }
-        DatabaseReference mdata = database.getReference("Account");
-        mdata.addValueEventListener(new ValueEventListener() {
+        mRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 for (DataSnapshot data : snapshot.getChildren()) {
 
-                    Account taiKhoanKH = data.getValue(Account.class);
-                    keyy=data.getKey();
-                    list.add(taiKhoanKH);
-                    for (int i = 0; i < list.size(); i++) {
+                    Account account = new Account(data.child("auth").getValue().toString(),
+                            data.child("username").getValue().toString(),
+                            data.child("password").getValue().toString(),
+                            data.child("phone").getValue().toString(),
+                            data.child("question").getValue().toString());
+                    list.add(account);
+                }
+                for (int i = 0; i < list.size(); i++) {
 
-                        if (list.get(i).getUsername().equals(tentk1)) {
-                            String passlai12=passwordcheck.getEditText().getText().toString();
+                    if (list.get(i).getUsername().equals(tentk1)) {
+                        String passlai12=passwordcheck.getEditText().getText().toString();
 
-                            DatabaseReference myRef = database.getReference("Account");
-                            myRef.child(keyy).child("password").setValue(passlai12);
-                            Toast.makeText(ChangePasswordActivity.this,R.string.change_password_toast_success, Toast.LENGTH_SHORT).show();
-                            Intent in=new Intent(ChangePasswordActivity.this,SignInActivity.class);
-                            startActivity(in);
-                            finish();
-                        }
+                        mRef.child(tentk1).child("password").setValue(passlai12);
+                        String auth = tentk1 + "-" + passlai12;
+                        mRef.child(tentk1).child("auth").setValue(auth);
+                        Toast.makeText(ChangePasswordActivity.this,R.string.change_password_toast_success, Toast.LENGTH_SHORT).show();
+                        Intent in=new Intent(ChangePasswordActivity.this,SignInActivity.class);
+                        startActivity(in);
+                        finish();
                     }
                 }
             }
@@ -95,5 +105,17 @@ public class ChangePasswordActivity extends AppCompatActivity {
     {
         password.setError("");
         passwordcheck.setError("");
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 }

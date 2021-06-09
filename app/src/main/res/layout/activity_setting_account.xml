@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/top_button_background"
+    tools:context=".user.fragment.setting.SettingAccountActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/backgroud_menu_setting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_settingAccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/settingactivity_setting_usernarm"
+                android:textAllCaps="false"
+                android:textSize="20dp"
+                android:textStyle="italic"
+                android:onClick="ChooseImageSetting"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username_settingaccount" />
+
+            <TextView
+                android:id="@+id/tv_username_settingaccount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
+                android:text="TextView"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_settingAccount">
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ed_name_settingaccount"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusBottomEnd="30dp"
+                    app:boxCornerRadiusBottomStart="30dp"
+                    app:boxCornerRadiusTopEnd="30dp"
+                    app:boxCornerRadiusTopStart="30dp"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/settingaccountactivity_name" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginRight="24dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ed_age_settingaccount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="238dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:errorEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/settingaccountactivity_year_old" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/ed_phone_settingaccount"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                app:boxCornerRadiusBottomEnd="30dp"
+                app:boxCornerRadiusBottomStart="30dp"
+                app:boxCornerRadiusTopEnd="30dp"
+                app:boxCornerRadiusTopStart="30dp"
+                app:errorEnabled="true">
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/settingaccountactivity_phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+        </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginBottom="16dp"
+                    android:layout_marginRight="24dp"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="100px"
+                        android:text="@string/settingaccountactivity_sex"
+                        android:layout_marginRight="20dp"
+                        android:paddingTop="3dp"
+                        android:textSize="20dp" />
+                    <RadioGroup
+                        android:id="@+id/RadioGroup1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+                        <RadioButton
+                            android:id="@+id/rb_nam"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100px"
+                            android:layout_marginRight="20dp"
+                            android:text="@string/settingaccountactivity_male"/>
+                        <RadioButton
+                            android:id="@+id/rb_nu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="100px"
+                            android:text="@string/settingaccountactivity_year_oldfemale"/>
+                    </RadioGroup>
+                </LinearLayout>
+
+                <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginLeft="24dp"
+                android:layout_marginEnd="24dp"
+                android:layout_marginRight="24dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ed_weight_settingaccount"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxCornerRadiusBottomEnd="30dp"
+                    app:boxCornerRadiusBottomStart="30dp"
+                    app:boxCornerRadiusTopEnd="30dp"
+                    android:layout_weight="1"
+                    app:boxCornerRadiusTopStart="30dp"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/settingaccountactivity_weight" />
+                </com.google.android.material.textfield.TextInputLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ed_height_settingaccount"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content"
+
+                    app:boxCornerRadiusBottomEnd="30dp"
+                    app:boxCornerRadiusBottomStart="30dp"
+                    app:boxCornerRadiusTopEnd="30dp"
+                    app:boxCornerRadiusTopStart="30dp"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/settingaccountactivity_height" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/ed_address_settingaccount"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginLeft="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:layout_marginRight="24dp"
+                    app:boxCornerRadiusBottomEnd="30dp"
+                    app:boxCornerRadiusBottomStart="30dp"
+                    app:boxCornerRadiusTopEnd="30dp"
+                    app:boxCornerRadiusTopStart="30dp"
+                    app:errorEnabled="true">
+
+                    <com.google.android.material.textfield.TextInputEditText
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="@string/settingaccountactivity_address" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background"
+            android:text="@string/settingaccountactivity_btn"
+            app:backgroundTint="@color/red"
+            android:paddingLeft="60dp"
+            android:onClick="onClickSave"
+            android:paddingRight="60dp"
+            app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/avata"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

@@ -3,16 +3,54 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
-    <!-- mainActivity-->
-    <string name="main_title_home">Bài tập</string>
-    <string name="main_title_report">Thông số</string>
-    <string name="main_title_advertisement">Giới thiệu</string>
+    <!--UserActivity-->
 
-    <!-- mainActivity-->
+    <string name="userActivity_title_home">Bài tập</string>
+    <string name="userActivity_title_advertisement">Giới thiệu</string>
+    <string name="userActivity_title_setting">Thông tin</string>
+    <!--UserActivity-->
 
+
+    <!--SettingActivity-->
+    <string name="settingactivity_setting_usernarm">Chỉnh sửa</string>
+    <string name="settingactivity_setting_account">Tài Khoản</string>
+    <string name="settingactivity_setting_for_get_password">Đổi mật khẩu</string>
+    <string name="settingactivity_setting_logout">Đăng xuất</string>
+    <!--SettingActivity-->
+    <!--SettingAccountActivity-->
+    <string name="settingaccount_title">Thông tin cá nhân</string>
+    <string name="settingaccountactivity_name">Họ và tên</string>
+    <string name="settingaccountactivity_sex">Giới tính</string>
+    <string name="settingaccountactivity_address">Địa Chỉ</string>
+    <string name="settingaccountactivity_height">Chiều cao</string>
+    <string name="settingaccountactivity_weight">Cân nặng</string>
+    <string name="settingaccountactivity_year_old">Tuổi</string>
+    <string name="settingaccountactivity_phone">Số điện thoại</string>
+    <string name="settingaccountactivity_male">Nam</string>
+    <string name="settingaccountactivity_year_oldfemale">Nữ</string>
+    <string name="settingaccount_error_noname">Vui lòng nhập tên</string>
+    <string name="settingaccount_error_noheight">Vui lòng nhập chiều cao</string>
+    <string name="settingaccount_error_noweight">Vui lòng nhập cân nặng</string>
+    <string name="settingaccount_error_noaddress">Vui lòng nhập địa chỉ</string>
+    <string name="settingaccount_error_noage">Vui lòng nhập tuổi</string>
+    <string name="settingaccount_error_nophone">Vui lòng nhập số điện thoại</string>
+    <string name="settingaccount_error_nogender">Vui lòng chọn giới tính</string>
+    <string name="settingaccount_error_noavatar">Vui lòng chọn ảnh đại diện</string>
+    <string name="settingaccount_toast_imageurl_failed">get image download url failed!</string>
+    <string name="settingaccount_toast_uploadimage_failed">upload image task failed!</string>
+    <string name="settingaccount_toast_success">Cập nhật thông tin thành công</string>
+
+
+    <!--SettingAccountActivity-->
+    <!-- navigation-->
+    <!--fragment_repost-->
+    <string name="frament_repost_bossname">Đại Diện:</string>
+    <string name="frament_repost_roomname">Tên Quán:</string>
+    <string name="frament_repost_phone">Số điện thoại:</string>
+    <string name="frament_repost_address">Địa chỉ:</string>
+    <!--fragment_repost-->
     <!-- navigation-->
 
-    <!-- navigation-->
 
 
     <!-- HomeFragment-->
@@ -96,6 +134,7 @@
     <string name="sign_up_error_noquestion">Vui lòng nhập câu trả lời!</string>
     <string name="sign_up_error_nophone">Vui lòng nhập số điện thoại!</string>
     <string name="sign_up_error_wrongphone">Số điện thoại không hợp lệ!</string>
+    <string name="sign_up_error_existed">Tài khoản đã tồn tại!</string>
     <string name="sign_up_toast_success">Thêm tài khoản thành công</string>
     <string name="sign_up_toast_failed">Thêm tài khoản thất bại</string>
     <string name="sign_up_button_signin">Đăng Ký</string>
@@ -113,7 +152,7 @@
     <string name="sign_in_error_wrongusername">Tài khoản tối thiểu 6 ký tự!</string>
     <string name="sign_in_error_nopassword">Mật khẩu tối thiểu 6 ký tự!</string>
     <string name="sign_in_error_wrongpassword">Mật khẩu bạn nhập không đúng!</string>
-    <string name="sign_in_error_notcorrectusername">Tài khoản không chính xác!</string>
+    <string name="sign_in_error_notcorrectusername">Tài khoản không tồn tại!</string>
     <string name="sign_in_error_notcorrectpassword">Mật khẩu không chính xác!</string>
     <string name="sign_in_toast_welcomeadmin">Chào mừng Admin</string>
     <string name="sign_in_toast_success">Đăng Nhập Thành công</string>
@@ -127,6 +166,7 @@
     <!-- SignInActivity -->
 
     <!-- ForgetPasswordActivity -->
+    <string name="forget_password_title">Quên mật khẩu</string>
     <string name="forget_password_error_require">Không được bỏ trống!</string>
     <string name="forget_password_error_wrongusername">Tài khoản không chính xác!</string>
     <string name="forget_password_error_notcorrectusername">Tài khoản không tồn tại!</string>
@@ -142,6 +182,7 @@
     <!-- ForgetPasswordActivity -->
 
     <!-- ChangePasswordActivity -->
+    <string name="change_password_title">Đổi mật khẩu</string>
     <string name="change_password_error_nopassword">Vui lòng nhập mật khẩu!</string>
     <string name="change_password_error_wrongpassword">Mật khẩu tối thiểu 6 ký tự!</string>
     <string name="change_password_error_notcorrectpassword">Mật khẩu bạn nhập không đúng!</string>
@@ -173,6 +214,7 @@
     <string name="btn_day5">Ngày 5</string>
     <string name="btn_day6">Ngày 6</string>
     <string name="btn_day7">Ngày 7</string>
+    <string name="settingaccountactivity_btn">Lưu</string>
 
     <!-- Day -->
 </resources>

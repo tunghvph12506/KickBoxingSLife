@@ -7,4 +7,9 @@
         android:icon="@android:drawable/ic_input_add"
         app:showAsAction="always"
         android:title="Them" />
+    <item
+        android:id="@+id/logout_admin"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:title="Logout" />
 </menu>

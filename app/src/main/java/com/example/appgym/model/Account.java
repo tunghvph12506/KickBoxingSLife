@@ -1,16 +1,25 @@
 package com.example.appgym.model;
 
 public class Account {
-    String username,password,phone,question;
+    String auth,username,password,phone,question;
 
     public Account() {
     }
 
-    public Account(String username, String password, String phone, String question) {
+    public Account(String auth, String username, String password, String phone, String question) {
+        this.auth = auth;
         this.username = username;
         this.password = password;
         this.phone = phone;
         this.question = question;
+    }
+
+    public String getAuth() {
+        return auth;
+    }
+
+    public void setAuth(String auth) {
+        this.auth = auth;
     }
 
     public String getUsername() {

@@ -5,11 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.appgym.MainActivity;
 import com.example.appgym.R;
 import com.example.appgym.model.Account;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -24,6 +22,7 @@ import com.google.firebase.database.ValueEventListener;
 public class SignUpActivity extends AppCompatActivity {
     TextInputLayout edUserName, edPassword, edPasswordCheck, edPhone, edQuestion;
     FirebaseDatabase database;
+    DatabaseReference databaseReferenceCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,27 +61,35 @@ public class SignUpActivity extends AppCompatActivity {
             edPhone.setError(getResources().getString(R.string.sign_up_error_nophone));
         } else if (phone.length() < 10 || phone.length() > 11) {
             edPhone.setError(getResources().getString(R.string.sign_up_error_wrongphone));
-        } else {
+        }
+        else {
             String key = username + "-" + password;
-            DatabaseReference myRef = database.getReference().child("Account").child(key);
+            DatabaseReference myRef = database.getReference().child("Account").child(username);
             myRef.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    Account account = new Account(username, password, phone, question);
-                    myRef.setValue(account).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void aVoid) {
-                            Toast.makeText(SignUpActivity.this, R.string.sign_up_toast_success, Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
-                            startActivity(i);
-                            finish();
-                        }
-                    }).addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(SignUpActivity.this, R.string.sign_up_toast_failed, Toast.LENGTH_SHORT).show();
-                        }
-                    });
+                    if(snapshot.exists())
+                    {
+                        edUserName.setError(getResources().getString(R.string.sign_up_error_existed));
+                    }
+                    else
+                    {
+                        Account account = new Account(key ,username, password, phone, question);
+                        myRef.setValue(account).addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(SignUpActivity.this, R.string.sign_up_toast_success, Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(SignUpActivity.this, SignInActivity.class);
+                                startActivity(i);
+                                finish();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(SignUpActivity.this, R.string.sign_up_toast_failed, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    }
                 }
 
                 @Override

@@ -6,14 +6,8 @@ import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.appgym.MainActivity;
 import com.example.appgym.R;
 import com.example.appgym.account.SignInActivity;
-
-import java.io.IOException;
-import java.net.InetSocketAddress;
-import java.net.Socket;
-import java.net.SocketAddress;
 
 public class SplashActivity extends AppCompatActivity {
 

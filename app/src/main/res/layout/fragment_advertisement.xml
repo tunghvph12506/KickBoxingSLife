@@ -1,14 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent"
-    tools:context=".advertisement.AdvertisementFragment">
+    tools:context=".user.fragment.advertisement.AdvertisementFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
 
-</FrameLayout>
+        android:layout_height="match_parent"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="48dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/backgroud_menu_setting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/imglogoQuan"
+                    android:layout_width="match_parent"
+                    android:layout_height="144dp"
+                    />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="vertical"
+                    android:layout_marginTop="50dp"
+                    android:layout_height="wrap_content">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textView9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/frament_repost_bossname"
+                            android:layout_marginRight="42dp"
+                            android:textSize="20sp" />
+                        <TextView
+                            android:id="@+id/tv_bossname_repost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:text="TextView" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/textView91"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/frament_repost_roomname"
+                            android:layout_marginRight="42dp"
+                            android:textSize="20sp" />
+                        <TextView
+                            android:id="@+id/tv_roomname_repost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:text="TextView" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_marginBottom="40dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textView11"
+                            android:textSize="20sp"
+                            android:layout_width="wrap_content"
+
+                            android:layout_height="wrap_content"
+                            android:text="@string/frament_repost_phone" />
+                        <TextView
+                            android:id="@+id/tv_phone_repost"
+                            android:layout_width="match_parent"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_height="wrap_content"
+                            android:text="TextView" />
+                    </LinearLayout>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="16dp"
+                        android:layout_marginRight="16dp"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:id="@+id/textView12"
+                            android:layout_width="wrap_content"
+                            android:textSize="20sp"
+                            android:layout_marginRight="50dp"
+                            android:layout_height="wrap_content"
+                            android:text="@string/frament_repost_address" />
+                        <TextView
+                            android:id="@+id/tv_address_repost"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textSize="20sp"
+                            android:text="TextView" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

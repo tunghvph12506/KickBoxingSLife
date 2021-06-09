@@ -9,11 +9,10 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.example.appgym.MainActivity;
+import com.example.appgym.UserActivity;
 import com.example.appgym.R;
 import com.example.appgym.admin.AdminActivity;
 import com.example.appgym.model.Account;
-import com.example.appgym.splash.SplashActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -71,10 +70,9 @@ public class SignInActivity extends AppCompatActivity {
                         } else if (username.equals(list.get(i).getUsername()) && password.equals(list.get(i).getPassword())) {
 
                             Toast.makeText(SignInActivity.this, R.string.sign_in_toast_success, Toast.LENGTH_SHORT).show();
-                            Intent intent = new Intent(SignInActivity.this, MainActivity.class);
-                            Bundle b = new Bundle();
-                            b.putString("username", list.get(i).getUsername());
-                            intent.putExtras(b);
+                            Intent intent = new Intent(SignInActivity.this, UserActivity.class);
+                            intent.putExtra("auth",list.get(i).getAuth());
+                            intent.putExtra("username",list.get(i).getUsername());
                             startActivity(intent);
                             finish();
                             break;

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    tools:context=".user.fragment.setting.SettingAccountActivity">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="32dp"
+            android:layout_marginLeft="32dp"
+            android:layout_marginTop="80dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:layout_marginBottom="80dp"
+            android:background="@drawable/backgroud_menu_setting"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/tv_username_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="58dp"
+                android:text="TextView"
+                android:textAllCaps="true"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="16dp"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tv_username_setting">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/item_settingactivity"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageView34"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/icon_user" />
+
+                    <TextView
+                        android:id="@+id/tv_settingAccount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="20dp"
+
+                        android:text="@string/settingactivity_setting_account"
+                        android:textSize="16sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/item_settingactivity"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageView32"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/icon_password" />
+
+                    <TextView
+                        android:id="@+id/btn_for_get_password_setting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="20dp"
+
+                        android:text="@string/settingactivity_setting_for_get_password"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/item_settingactivity"
+                    android:orientation="horizontal"
+                    android:paddingTop="16dp"
+                    android:paddingBottom="16dp">
+
+                    <ImageView
+                        android:id="@+id/imageView33"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+
+                        android:src="@drawable/icon_logout" />
+
+                    <TextView
+                        android:id="@+id/tv_log_out"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="20dp"
+                        android:text="@string/settingactivity_setting_logout"
+                        android:textSize="16sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/circleImageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/avata"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout"
+            app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
+            app:layout_constraintStart_toStartOf="@+id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

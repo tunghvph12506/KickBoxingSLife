@@ -13,6 +13,7 @@ import android.view.MenuItem;
 import com.example.appgym.user.fragment.advertisement.AdvertisementFragment;
 import com.example.appgym.user.fragment.home.HomeFragment;
 import com.example.appgym.user.fragment.report.ReportFragment;
+import com.example.appgym.user.fragment.setting.SettingFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.io.IOException;
@@ -20,20 +21,24 @@ import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
 
-public class MainActivity extends AppCompatActivity {
+public class UserActivity extends AppCompatActivity {
     ActionBar toolbar;
+    public static String authAll;
+    public static String usernameAll;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_user);
         toolbar = getSupportActionBar();
         toolbar.setElevation(0);
+        Bundle gets = getIntent().getExtras();
+        authAll = gets.getString("auth");
+        usernameAll = gets.getString("username");
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         toolbar.setTitle("Home");
         loadFragment(new HomeFragment());
     }
-
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener
             = new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
@@ -41,18 +46,18 @@ public class MainActivity extends AppCompatActivity {
             Fragment fragment;
             switch (item.getItemId()) {
                 case R.id.navigation_home:
-                    toolbar.setTitle("Home");
+                    toolbar.setTitle(getResources().getString(R.string.userActivity_title_home));
                     fragment = new HomeFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_report:
-                    toolbar.setTitle("Report");
-                    fragment = new ReportFragment();
+                case R.id.navigation_advertisement:
+                    toolbar.setTitle(getResources().getString(R.string.userActivity_title_advertisement));
+                    fragment = new AdvertisementFragment();
                     loadFragment(fragment);
                     return true;
-                case R.id.navigation_advertisement:
-                    toolbar.setTitle("Advertisement");
-                    fragment = new AdvertisementFragment();
+                case R.id.navigation_setting:
+                    toolbar.setTitle(getResources().getString(R.string.userActivity_title_setting));
+                    fragment = new SettingFragment();
                     loadFragment(fragment);
                     return true;
             }

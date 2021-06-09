@@ -14,6 +14,7 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.util.Log;
@@ -219,13 +220,18 @@ public class EditActivity extends AppCompatActivity {
         int a = 0;
         if(!TextUtils.isEmpty(videoName) && !TextUtils.isEmpty(calo)) {
             progressBar.setVisibility(View.VISIBLE);
-            exercise.setName(videoName);
-            exercise.setCalo(calo);
-            exercise.setSearch(search);
-            exercise.setDay(day);
-            databaseReference.child(search).setValue(exercise);
-            progressBar.setVisibility(View.INVISIBLE);
-            Toast.makeText(EditActivity.this, R.string.edit_toast_updated, Toast.LENGTH_SHORT).show();
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    exercise.setName(videoName);
+                    exercise.setCalo(calo);
+                    exercise.setSearch(search);
+                    exercise.setDay(day);
+                    databaseReference.child(search).setValue(exercise);
+                    progressBar.setVisibility(View.INVISIBLE);
+                    Toast.makeText(EditActivity.this, R.string.edit_toast_updated, Toast.LENGTH_SHORT).show();
+                }
+            }, 3 * 1000);
+
         }
         else
         {

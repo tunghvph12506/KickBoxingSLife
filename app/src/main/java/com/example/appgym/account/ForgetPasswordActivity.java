@@ -1,11 +1,13 @@
 package com.example.appgym.account;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -25,10 +27,16 @@ public class ForgetPasswordActivity extends AppCompatActivity {
     TextInputLayout ed_username,ed_reply;
     List<Account> list=new ArrayList<>();
     FirebaseDatabase database=FirebaseDatabase.getInstance();
+    ActionBar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forget_password);
+
+        toolbar = getSupportActionBar();
+        toolbar.setTitle(R.string.forget_password_title);
+        toolbar.setDisplayHomeAsUpEnabled(true);
+
         ed_reply = findViewById(R.id.ed_reply_for_get_pas);
         ed_username = findViewById(R.id.ed_username_for_get_pas);
         resetError();
@@ -88,6 +96,18 @@ public class ForgetPasswordActivity extends AppCompatActivity {
                 Toast.makeText(ForgetPasswordActivity.this, R.string.forget_password_toast_failed, Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
+        {
+            case android.R.id.home:
+                finish();
+                return true;
+
+            default: return super.onOptionsItemSelected(item);
+        }
     }
 
     private void resetError()
