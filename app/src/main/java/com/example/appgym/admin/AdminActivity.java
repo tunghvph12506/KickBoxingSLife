@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.appgym.R;
+import com.example.appgym.account.SignInActivity;
 import com.example.appgym.admin.fragment.leg.LegAdminFragment;
 import com.example.appgym.admin.fragment.map.MapAdminFragment;
 import com.example.appgym.admin.fragment.chest.ChestAdminFragment;
@@ -93,6 +94,12 @@ public class AdminActivity extends AppCompatActivity {
             case R.id.add_icon:
                 Intent intent = new Intent(AdminActivity.this,AddActivity.class);
                 startActivity(intent);
+                return true;
+
+            case R.id.logout_admin:
+                Intent intent1 = new Intent(AdminActivity.this, SignInActivity.class);
+                startActivity(intent1);
+                finish();
                 return true;
 
             default: return super.onOptionsItemSelected(item);

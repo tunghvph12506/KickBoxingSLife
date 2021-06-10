@@ -60,7 +60,6 @@ import java.util.List;
 public class EditActivity extends AppCompatActivity {
     static final int PICK_VIDEO = 1;
     static final int PICK_IMAGE = 2;
-    String a;
     VideoView videoView;
     Button btnUpload;
     ProgressBar progressBar;

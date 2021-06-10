@@ -97,19 +97,20 @@ public class SettingAccountActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists())
                 {
-                    Information information = snapshot.getValue(Information.class);
-                    edName.getEditText().setText(information.getName());
-                    edAge.getEditText().setText(information.getAge());
-                    edPhone.getEditText().setText(information.getPhone());
-                    edWeight.getEditText().setText(information.getWeight());
-                    edHeight.getEditText().setText(information.getHeight());
-                    edAddress.getEditText().setText(information.getAddress());
-                    imageUrl = information.getImageUrl();
+                    Information informationget = snapshot.getValue(Information.class);
+                    edName.getEditText().setText(informationget.getName());
+                    edAge.getEditText().setText(informationget.getAge());
+                    edPhone.getEditText().setText(informationget.getPhone());
+                    edWeight.getEditText().setText(informationget.getWeight());
+                    edHeight.getEditText().setText(informationget.getHeight());
+                    edAddress.getEditText().setText(informationget.getAddress());
+                    imageUrl = informationget.getImageUrl();
                     if(imageUrl != null)
                     {
                         Picasso.get().load(imageUrl).into(imageView);
+                        information.setImageUrl(imageUrl);
                     }
-                    if(information.getGender().equals("Nam"))
+                    if(informationget.getGender().equals("Nam"))
                     {
                         radioButton1.setChecked(true);
                     }

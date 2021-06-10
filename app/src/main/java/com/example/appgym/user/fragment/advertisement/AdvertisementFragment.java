@@ -25,8 +25,7 @@ import java.util.List;
 
 public class AdvertisementFragment extends Fragment {
     ImageView imgLogo;
-    TextView tv_bossname,address,numberphone,roomname;
-    List<Advertisement> list;
+    TextView tv_bossname,tv_address,tv_numberphone,tv_roomname;
     public AdvertisementFragment() {
         // Required empty public constructor
     }
@@ -34,34 +33,35 @@ public class AdvertisementFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view=inflater.inflate(R.layout.fragment_advertisement, container, false);
-        imgLogo=view.findViewById(R.id.imglogoQuan);
-        tv_bossname=view.findViewById(R.id.tv_bossname_repost);
-        address=view.findViewById(R.id.tv_address_repost);
-        numberphone=view.findViewById(R.id.tv_phone_repost);
-        roomname=view.findViewById(R.id.tv_roomname_repost);
-        list=new ArrayList<>();
+        View view = inflater.inflate(R.layout.fragment_advertisement, container, false);
+        imgLogo = view.findViewById(R.id.imglogoQuan);
+        tv_bossname = view.findViewById(R.id.tv_bossname_repost);
+        tv_address = view.findViewById(R.id.tv_address_repost);
+        tv_numberphone = view.findViewById(R.id.tv_phone_repost);
+        tv_roomname = view.findViewById(R.id.tv_roomname_repost);
         getData();
         return view;
     }
 
     private void getData() {
         FirebaseDatabase database=FirebaseDatabase.getInstance();
-        DatabaseReference mdata=database.getReference().child("Advertisement");
-        mdata.addValueEventListener(new ValueEventListener() {
+        DatabaseReference myRef = database.getReference("Advertisement").child("All");
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot postSnapshot: snapshot.getChildren()) {
-                    Log.d("TAG", "onDataChange: "+postSnapshot.getValue());
-                    Advertisement advertisement = postSnapshot.getValue(Advertisement.class);
-                    list.add(advertisement);
-                    Log.d("TAG", "getData: "+list);
+                if(snapshot.exists())
+                {
+                    Advertisement advertisement = snapshot.getValue(Advertisement.class);
+                    tv_roomname.setText(advertisement.getRoomname());
+                    tv_bossname.setText(advertisement.getBossname());
+                    tv_numberphone.setText(advertisement.getNumberphone());
+                    tv_address.setText(advertisement.getAddress());
+                    String imgUrl = advertisement.getImageUrl();
+                    if(imgUrl != null)
+                    {
+                        Picasso.get().load(imgUrl).into(imgLogo);
+                    }
                 }
-                roomname.setText(list.get(0).getRoomname());
-                tv_bossname.setText(list.get(0).getBossname());
-                numberphone.setText(list.get(0).getNumberphone());
-                address.setText(list.get(0).getAddress());
-                Picasso.get().load(list.get(0).getImageUrl()).into(imgLogo);
             }
             @Override
             public void onCancelled(@NonNull DatabaseError error) {

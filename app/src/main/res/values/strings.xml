@@ -106,6 +106,7 @@
     <string name="mapadd_toast_added">Sửa thông tin thành công</string>
     <string name="mapadd_toast_imageurl_failed">Get image download url failed!</string>
     <string name="mapadd_toast_uploadimage_failed">Upload image task failed!</string>
+    <string name="mapadd_toast_require">Vui lòng nhập đầy đủ!</string>
 
     <!-- MapAddActivity -->
 

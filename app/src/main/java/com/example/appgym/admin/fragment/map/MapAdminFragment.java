@@ -12,7 +12,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.os.Handler;
 import android.provider.MediaStore;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,14 +26,20 @@ import android.widget.Toast;
 
 import com.example.appgym.R;
 import com.example.appgym.admin.AddActivity;
+import com.example.appgym.admin.EditActivity;
 import com.example.appgym.model.Advertisement;
+import com.example.appgym.user.fragment.setting.SettingAccountActivity;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+import com.squareup.picasso.Picasso;
 
 public class MapAdminFragment extends Fragment {
     static final int PICK_IMAGE = 2;
@@ -42,7 +51,9 @@ public class MapAdminFragment extends Fragment {
     Advertisement advertisement;
     DatabaseReference databaseReference;
     StorageReference storageReferenceImage;
+    FirebaseStorage firebaseStorage;
     UploadTask uploadTask;
+    String imageUrl;
 
     public MapAdminFragment() {
         // Required empty public constructor
@@ -53,7 +64,8 @@ public class MapAdminFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view =inflater.inflate(R.layout.fragment_admin_map, container, false);
         advertisement = new Advertisement();
-        databaseReference = FirebaseDatabase.getInstance().getReference("Advertisement");
+        firebaseStorage = FirebaseStorage.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference("Advertisement").child("All");
         storageReferenceImage = FirebaseStorage.getInstance().getReference("Images");
 
         edt_room = view.findViewById(R.id.edt_roomname_mapadd);
@@ -78,8 +90,33 @@ public class MapAdminFragment extends Fragment {
                 ChooseImage();
             }
         });
-        return view;
 
+        databaseReference.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists())
+                {
+                    Advertisement advertisementget = snapshot.getValue(Advertisement.class);
+                    edt_room.setText(advertisementget.getRoomname());
+                    edt_boss.setText(advertisementget.getBossname());
+                    edt_phone.setText(advertisementget.getNumberphone());
+                    edt_address.setText(advertisementget.getAddress());
+                    imageUrl = advertisementget.getImageUrl();
+                    if(imageUrl != null)
+                    {
+                        Picasso.get().load(imageUrl).into(imageView);
+                        advertisement.setImageUrl(imageUrl);
+                    }
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+        return view;
 
     }
 
@@ -90,36 +127,24 @@ public class MapAdminFragment extends Fragment {
         String numberphone = edt_phone.getText().toString();
         String address = edt_address.getText().toString();
 
-        final StorageReference referenceImage = storageReferenceImage.child("advertisement_image");
-        uploadTask = referenceImage.putFile(imageUri);
-        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                referenceImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        String urlimage = uri.toString();
-                        advertisement.setImageUrl(urlimage);
-                        advertisement.setRoomname(roomname);
-                        advertisement.setBossname(bossname);
-                        advertisement.setNumberphone(numberphone);
-                        advertisement.setAddress(address);
-                        databaseReference.setValue(advertisement);
-                        Toast.makeText(getActivity(), R.string.mapadd_toast_added, Toast.LENGTH_SHORT).show();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(getActivity(), R.string.mapadd_toast_imageurl_failed, Toast.LENGTH_SHORT).show();
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                Toast.makeText(getActivity(), R.string.mapadd_toast_uploadimage_failed, Toast.LENGTH_SHORT).show();
-            }
-        });
+        if(!TextUtils.isEmpty(roomname) && !TextUtils.isEmpty(bossname) && !TextUtils.isEmpty(numberphone) && !TextUtils.isEmpty(address))
+        {
+            advertisement.setRoomname(roomname);
+            advertisement.setBossname(bossname);
+            advertisement.setNumberphone(numberphone);
+            advertisement.setAddress(address);
+            new Handler().postDelayed(new Runnable() {
+                public void run() {
+                    databaseReference.setValue(advertisement);
+                    Toast.makeText(getActivity(), R.string.mapadd_toast_added, Toast.LENGTH_SHORT).show();
+                }
+            }, 3 * 1000);
+        }
+        else
+        {
+            Toast.makeText(getActivity(),R.string.mapadd_toast_require,Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void ChooseImage()
@@ -145,6 +170,7 @@ public class MapAdminFragment extends Fragment {
                         bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), imageUri);
                     }
                     imageView.setImageBitmap(bitmap);
+                    changeImage();
 
                 }
             }catch (Exception e)
@@ -152,5 +178,35 @@ public class MapAdminFragment extends Fragment {
                 e.printStackTrace();
             }
         }
+    }
+
+    private void changeImage()
+    {
+        final StorageReference referenceImage = storageReferenceImage.child("advertisement_image");
+        uploadTask = referenceImage.putFile(imageUri);
+        uploadTask.addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                referenceImage.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String urlimage = uri.toString();
+                        advertisement.setImageUrl(urlimage);
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(Exception e) {
+                        e.getMessage();
+                        Toast.makeText(getActivity(), R.string.mapadd_toast_imageurl_failed, Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(Exception e) {
+                e.getMessage();
+                Toast.makeText(getActivity(), R.string.mapadd_toast_uploadimage_failed, Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }
